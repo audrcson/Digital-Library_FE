@@ -9,7 +9,7 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
   return (
     <>
       <div
-        className={`fixed top-[12%] left-0 h-[88%] w-[45%] lg:w-[23%] bg-[rgba(94,150,214,0.96)] px-4 py-1 z-40 transform ${
+        className={`fixed top-[12%] left-0 h-[88%] w-[45%] lg:w-[23%] bg-[rgb(94,150,214)] px-4 py-1 z-40 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out lg:top-0 lg:h-screen lg:translate-x-0 lg:block`}
       >

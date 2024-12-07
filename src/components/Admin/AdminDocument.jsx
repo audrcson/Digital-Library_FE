@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
+import { FaPlus, FaTrash, FaEdit, FaEye } from 'react-icons/fa';
 import AddNewDocument from './AddNewDocument';
 
 const AdminDocument = () => {
@@ -39,22 +39,24 @@ const AdminDocument = () => {
   });
 
   return (
-    <div className="overflow-auto rounded-lg shadow-lg">
+    <div className="overflow-auto rounded-lg px-5">
       <div className="mb-4 flex justify-between items-center">
-        <h1 className="text-2xl font-semibold text-gray-800">Documents</h1>
+        <h1 className="text-3xl source-sans-3-semibold text-gray-800">Documents</h1>
       </div>
 
       <div className="flex justify-between mb-4">
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          onClick={() => setShowAddForm(true)} 
+          className="px-4 py-2 bg-[#3a99ff] text-white source-sans-3-regular rounded"
+          onClick={() => setShowAddForm(true)}
         >
+          <FaPlus className="inline mr-2" />
           Add New Document
         </button>
         <button
           className={`px-4 py-2 rounded ${selectAll ? 'bg-red-500' : 'bg-gray-500'} text-white hover:bg-red-600`}
           disabled={!selectAll}
         >
+          <FaTrash className="inline mr-2" />
           Delete
         </button>
       </div>
