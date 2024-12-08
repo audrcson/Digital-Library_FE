@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
   return (
     <>
       <div
-        className={`fixed top-[12%] left-0 h-[36%] w-full lg:w-[23%] bg-[rgb(94,150,214)] px-4 py-1 z-40 transform ${
+        className={`fixed top-[12%] left-0 h-[28%] w-full lg:w-[23%] bg-[#1A2E3E] px-4 py-1 z-40 transform ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:translate-x-0 lg:top-0 lg:h-screen lg:block`}
       >
@@ -46,7 +46,7 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
             <div key={index}>
               {/* Accordion header */}
               <div
-                className="source-sans-3-regular text-white px-4 py-2 cursor-pointer bg-[#3a99ff] transition-colors duration-300 flex items-center justify-between"
+                className="source-sans-3-regular text-white px-4 py-2 cursor-pointer bg-[rgba(66,112,165,0.96)] rounded text-left hover:bg-blue-500 transition-colors duration-300 flex items-center justify-between"
                 onClick={() => handleAccordionToggle(index)}
               >
                 <span>{item.title}</span>
@@ -60,11 +60,11 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
 
               {/* Accordion content */}
               {openIndex === index && (
-                <div className="space-y-2 px-4 bg-[#3a99ff] pt-2 pb-4">
+                <div className="space-y-2 px-4 bg-[rgba(66,112,165,0.96)] pt-2 pb-4">
                   {item.buttons.map((btnLabel, btnIndex) => (
                     <button
                       key={btnIndex}
-                      className="w-full px-4 py-2 bg-[#fafafa] text-blue-800 rounded text-left hover:bg-blue-400 transition-colors duration-300"
+                      className="w-full px-4 py-2 bg-[#fafafa] text-blue-800 rounded text-left hover:bg-blue-500 transition-colors duration-300"
                       onClick={() => handleButtonClick(`${item.title}-${btnLabel}`)}
                     >
                       {btnLabel}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaPlus, FaTrash, FaSearch, FaEdit, FaEye } from 'react-icons/fa';
+import { LuArrowUpDown } from "react-icons/lu";
 import AddNewDocument from './AddNewDocument';
 
 const AdminDocument = () => {
@@ -79,6 +80,7 @@ const AdminDocument = () => {
         onChange={(e) => setStatusFilter(e.target.value)}
         >
           <option value="" disabled selected hidden>
+            <LuArrowUpDown />
             Sort by
           </option>
           <option value="">All Status</option>
@@ -133,15 +135,15 @@ const AdminDocument = () => {
                     {item.status}
                   </span>
                 </td>
-                <td className="px-4 py-2 border sticky right-0 bg-white">
-                  <div className="flex justify-around space-x-2">
-                    <button className="text-blue-500 hover:text-blue-700">
+                <td className="px-2 py-2 border sticky right-0 bg-white">
+                  <div className="flex justify-around space-x-2 sm:space-x-4">
+                    <button className="text-white hover:text-blue-600 bg-gray-400 px-2 py-1 rounded">
                       <FaEye />
                     </button>
-                    <button className="text-yellow-500 hover:text-yellow-700">
+                    <button className="text-white hover:text-blue-600 bg-gray-400 px-2 py-1 rounded">
                       <FaEdit />
                     </button>
-                    <button className="text-red-500 hover:text-red-700">
+                    <button className="text-white hover:text-blue-600 bg-gray-400 px-2 py-1 rounded">
                       <FaTrash />
                     </button>
                   </div>

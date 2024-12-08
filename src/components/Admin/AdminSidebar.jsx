@@ -8,15 +8,12 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
 
   return (
     <>
+      {/* Sidebar Positioned Below Header */}
       <div
-        className={`fixed top-[12%] left-0 h-[28%] w-full lg:w-[23%] bg-[rgb(94,150,214)] px-4 py-1 z-40 transform ${
+        className={`fixed top-[12%] left-0 h-[28%] w-full lg:w-[23%] bg-[#1A2E3E] px-4 py-1 z-40 transform ${
           isOpen ? "translate-y-0" : "-translate-y-full"
-        } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:translate-x-0 lg:top-0 lg:h-screen lg:block`}
+        } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:top-[12%] lg:h-screen lg:block`}
       >
-        <div className="justify-center hidden lg:flex">
-          <img src="ptdi.png" alt="Logo" className="max-h-[70px] object-contain" />
-        </div>
-
         <div className="space-y-3 pt-6">
           {buttons.map((button, index) => (
             <button
@@ -30,6 +27,7 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
         </div>
       </div>
 
+      {/* Overlay for Mobile */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-30 lg:hidden"
