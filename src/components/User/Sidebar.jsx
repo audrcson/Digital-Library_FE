@@ -33,13 +33,8 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
       <div
         className={`fixed top-[12%] left-0 h-[80%] w-full lg:w-[23%] bg-[#1A2E3E] px-4 py-1 z-40 transform ${
           isOpen ? "translate-y-0" : "-translate-y-full"
-        } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:translate-x-0 lg:top-0 lg:h-screen lg:block`}
+        } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:translate-x-0 lg:top-[12%] lg:h-screen lg:block`}
       >
-        {/* Logo at the top of the Sidebar */}
-        <div className="justify-center hidden lg:flex">
-          <img src="ptdi.png" alt="Logo" className="max-h-[70px] object-contain" />
-        </div>
-
         {/* Sidebar Content */}
         <div className="space-y-3 pt-6">
           {items.map((item, index) => (
