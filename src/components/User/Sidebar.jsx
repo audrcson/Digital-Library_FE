@@ -46,11 +46,14 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
             <div key={index}>
               {/* Accordion header */}
               <div
-                className="source-sans-3-regular text-white px-4 py-2 cursor-pointer bg-[rgba(66,112,165,0.96)] rounded text-left hover:bg-blue-500 transition-colors duration-300 flex items-center justify-between"
+                className={`source-sans-3-regular text-white px-4 py-2 cursor-pointer ${
+                  openIndex === index
+                    ? "bg-[rgba(66,112,165,0.96)] rounded-t"
+                    : "bg-[rgba(66,112,165,0.96)] rounded hover:bg-blue-500"
+                } transition-colors duration-300 flex items-center justify-between`}
                 onClick={() => handleAccordionToggle(index)}
               >
                 <span>{item.title}</span>
-                {/* Conditional rendering of arrow */}
                 {openIndex === index ? (
                   <IoIosArrowUp className="text-xl" />
                 ) : (
@@ -61,16 +64,16 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
               {/* Accordion content */}
               {openIndex === index && (
                 <div className="space-y-2 px-4 bg-[rgba(66,112,165,0.96)] pt-2 pb-4">
-                  {item.buttons.map((btnLabel, btnIndex) => (
-                    <button
-                      key={btnIndex}
-                      className="w-full px-4 py-2 bg-[#fafafa] text-blue-800 rounded text-left hover:bg-blue-500 transition-colors duration-300"
-                      onClick={() => handleButtonClick(`${item.title}-${btnLabel}`)}
-                    >
-                      {btnLabel}
-                    </button>
-                  ))}
-                </div>
+                {item.buttons.map((btnLabel, btnIndex) => (
+                  <button
+                    key={btnIndex}
+                    className="w-full px-4 py-2 bg-[#fafafa] text-blue-800 rounded text-center transition-colors duration-300"
+                    onClick={() => handleButtonClick(`${item.title}-${btnLabel}`)}
+                  >
+                    {btnLabel}
+                  </button>
+                ))}
+              </div>
               )}
             </div>
           ))}

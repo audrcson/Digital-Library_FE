@@ -9,13 +9,13 @@ const Dashbord = () => {
 
   const tableData = {
     "Document Procedure-MEM-DP-P602_4": [
-      { doc: "MEM-DP-P602_4", desc: "Link 1", date: "a", rev: "b", fileUrl: "/public/10-DP-P602_4.pdf" },
+      { doc: "MEM-DP-P602_4", desc: "Link 1", date: "a", rev: "b", fileUrl: "/10-DP-P602_4.pdf" },
     ],
     "Document Procedure-MEM-DP-W602_01": [
-      { doc: "MEM-DP-W602_01", desc: "Link 2", date: "a", rev: "b", fileUrl: "/public/10-DP-W602_01.pdf" },
+      { doc: "MEM-DP-W602_01", desc: "Link 2", date: "a", rev: "b", fileUrl: "/10-DP-W602_01.pdf" },
     ],
     "Document Procedure-MEM-DP-W602_02": [
-      { doc: "MEM-DP-W602_02", desc: "Link 3", date: "a", rev: "b", fileUrl: "/public/10-DP-W602_02.pdf" },
+      { doc: "MEM-DP-W602_02", desc: "Link 3", date: "a", rev: "b", fileUrl: "/10-DP-W602_02.pdf" },
     ],
     "Document Manual Book-MEM-MB-MAC": [
       { doc: "MEM-MB-MAC", desc: "Link 1", date: "a", rev: "b" },
