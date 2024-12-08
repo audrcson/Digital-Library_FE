@@ -3,20 +3,20 @@ import React from "react";
 const Table = ({ data }) => {
   return (
     <div className="overflow-auto rounded-lg shadow-lg">
-      <table className="min-w-full px-6 py-4 bg-white rounded-lg border border-gray-200">
+      <table className="min-w-full bg-white rounded-lg border border-gray-200 table-fixed">
         <thead>
           <tr>
-            <th className="px-4 py-2 border">Document</th>
-            <th className="px-4 py-2 border">Description</th>
-            <th className="px-4 py-2 border">Issue Date</th>
-            <th className="px-4 py-2 border">Revision</th>
+            <th className="px-4 py-2 border w-1/4">Document</th>
+            <th className="px-4 py-2 border w-1/4">Description</th>
+            <th className="px-4 py-2 border w-1/4">Issue Date</th>
+            <th className="px-4 py-2 border w-1/4">Revision</th>
           </tr>
         </thead>
         <tbody>
           {data.length > 0 ? (
             data.map((row) => (
               <tr key={row.doc}>
-                <td className="px-4 py-2 border text-center">
+                <td className="px-4 py-2 border text-center break-words">
                   <a
                     href={row.fileUrl}
                     target="_blank"
@@ -26,9 +26,15 @@ const Table = ({ data }) => {
                     {row.doc}
                   </a>
                 </td>
-                <td className="px-4 py-2 border text-center">{row.desc}</td>
-                <td className="px-4 py-2 border text-center">{row.date}</td>
-                <td className="px-4 py-2 border text-center">{row.rev}</td>
+                <td className="px-4 py-2 border text-center break-words">
+                  {row.desc}
+                </td>
+                <td className="px-4 py-2 border text-center break-words">
+                  {row.date}
+                </td>
+                <td className="px-4 py-2 border text-center break-words">
+                  {row.rev}
+                </td>
               </tr>
             ))
           ) : (

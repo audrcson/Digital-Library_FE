@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
   return (
     <>
       <div
-        className={`fixed top-[12%] left-0 h-[28%] w-full lg:w-[23%] bg-[#1A2E3E] px-4 py-1 z-40 transform ${
+        className={`fixed top-[12%] left-0 h-[80%] w-full lg:w-[23%] bg-[#1A2E3E] px-4 py-1 z-40 transform ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:translate-x-0 lg:top-0 lg:h-screen lg:block`}
       >
@@ -67,7 +67,7 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
                 {item.buttons.map((btnLabel, btnIndex) => (
                   <button
                     key={btnIndex}
-                    className="w-full px-4 py-2 bg-[#fafafa] text-blue-800 rounded text-center transition-colors duration-300"
+                    className="w-full px-4 py-2 bg-[#fafafa] text-blue-800 rounded source-sans-3-regular text-center transition-transform duration-200 active:scale-95 hover:opacity-90"
                     onClick={() => handleButtonClick(`${item.title}-${btnLabel}`)}
                   >
                     {btnLabel}

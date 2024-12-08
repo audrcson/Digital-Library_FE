@@ -83,12 +83,11 @@ const Login = () => {
               </div>
             </div>
             <div className="pt-8 ">
-              <button
-                className="btn text-lg text-white w-full xl:w-160 py-2 rounded-md source-sans-3-semibold"
-                style={{ backgroundColor: "#73A0C8" }}
-              >
-                Login
-              </button>
+            <button
+              className="btn text-lg text-white w-full xl:w-160 py-2 rounded-md source-sans-3-semibold bg-[#73A0C8] transition-transform duration-200 active:scale-95 hover:opacity-90"
+            >
+              Login
+            </button>
             </div>
           </div>
         </div>
