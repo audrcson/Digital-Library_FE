@@ -40,7 +40,7 @@ const AdminDocument = () => {
   });
 
   return (
-    <div className="overflow-auto rounded-lg px-5">
+    <div className="overflow-auto px-5">
       <div className="mb-4 flex justify-between items-center">
         <h1 className="text-3xl source-sans-3-semibold text-gray-800">Documents</h1>
       </div>

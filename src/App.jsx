@@ -6,7 +6,7 @@ import Admin from "./pages/Admin";
 const App = () => {
   return (
     <div className="">
-      <Dashbord />
+      <Admin />
     </div>
   )
 }
