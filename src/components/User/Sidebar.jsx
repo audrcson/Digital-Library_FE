@@ -31,9 +31,9 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
   return (
     <>
       <div
-        className={`fixed top-[12%] left-0 h-[88%] w-[45%] lg:w-[23%] bg-[#1A2E3E] px-4 py-1 z-40 transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out lg:top-0 lg:h-screen lg:translate-x-0 lg:block overflow-y-auto scrollbar-hide`}
+        className={`fixed top-[12%] left-0 h-[36%] w-full lg:w-[23%] bg-[rgb(94,150,214)] px-4 py-1 z-40 transform ${
+          isOpen ? "translate-y-0" : "-translate-y-full"
+        } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:translate-x-0 lg:top-0 lg:h-screen lg:block`}
       >
         {/* Logo at the top of the Sidebar */}
         <div className="justify-center hidden lg:flex">

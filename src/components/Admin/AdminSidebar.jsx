@@ -9,9 +9,9 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
   return (
     <>
       <div
-        className={`fixed top-[12%] left-0 h-[88%] w-[45%] lg:w-[23%] bg-[rgb(94,150,214)] px-4 py-1 z-40 transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out lg:top-0 lg:h-screen lg:translate-x-0 lg:block`}
+        className={`fixed top-[12%] left-0 h-[28%] w-full lg:w-[23%] bg-[rgb(94,150,214)] px-4 py-1 z-40 transform ${
+          isOpen ? "translate-y-0" : "-translate-y-full"
+        } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:translate-x-0 lg:top-0 lg:h-screen lg:block`}
       >
         <div className="justify-center hidden lg:flex">
           <img src="ptdi.png" alt="Logo" className="max-h-[70px] object-contain" />
@@ -22,7 +22,7 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
             <button
               key={index}
               className="block w-full px-4 py-2 bg-[rgba(66,112,165,0.96)] text-white rounded text-left hover:bg-blue-500 transition-colors duration-300"
-              onClick={() => onButtonClick(button.label)} // Kirim label tombol ke parent
+              onClick={() => onButtonClick(button.label)}
             >
               {button.label}
             </button>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPlus, FaTrash, FaEdit, FaEye } from 'react-icons/fa';
+import { FaPlus, FaTrash, FaSearch, FaEdit, FaEye } from 'react-icons/fa';
 import AddNewDocument from './AddNewDocument';
 
 const AdminDocument = () => {
@@ -10,9 +10,9 @@ const AdminDocument = () => {
   const [showAddForm, setShowAddForm] = useState(false);
 
   const data = [
-    { id: 1, document: 'Document 1', description: 'Description 1', issueDate: '2024-01-01', revision: 'v1.0', status: 'Available' },
-    { id: 2, document: 'Document 2', description: 'Description 2', issueDate: '2024-02-01', revision: 'v1.1', status: 'Borrowed' },
-    { id: 3, document: 'Document 3', description: 'Description 3', issueDate: '2024-03-01', revision: 'v2.0', status: 'Available' },
+    { id: 1, document: "Document 1", category: "Document Procedur", description: 'Description 1', issueDate: '2024-01-01', revision: 'v1.0', status: 'Available' },
+    { id: 2, document: "Document 2", category: "Document Procedur", description: 'Description 2', issueDate: '2024-02-01', revision: 'v1.1', status: 'Borrowed' },
+    { id: 3, document: "Document 3", category: "Document Procedur", description: 'Description 3', issueDate: '2024-03-01', revision: 'v2.0', status: 'Available' },
   ];
 
   const handleSelectAll = () => {
@@ -62,18 +62,25 @@ const AdminDocument = () => {
       </div>
 
       <div className="flex mb-4 justify-between">
-        <input
-          type="text"
-          className="px-4 py-2 border border-gray-300 rounded-lg w-1/2"
-          placeholder="Search by document name"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="relative w-1/2">
+          <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+          <input
+            type="text"
+            className="pl-10 px-4 py-2 border border-gray-300 rounded-lg w-full"
+            placeholder="Search by document name"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+
         <select
-          className="px-4 py-2 border border-gray-300 rounded-lg w-1/4"
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
+        className="px-4 py-2 border border-gray-300 rounded-lg w-1/4"
+        value={statusFilter}
+        onChange={(e) => setStatusFilter(e.target.value)}
         >
+          <option value="" disabled selected hidden>
+            Sort by
+          </option>
           <option value="">All Status</option>
           <option value="Available">Available</option>
           <option value="Borrowed">Borrowed</option>
@@ -92,7 +99,8 @@ const AdminDocument = () => {
                   onChange={handleSelectAll}
                 />
               </th>
-              <th className="px-4 py-2 border">Document</th>
+              <th className="px-4 py-2 border">Document Name</th>
+              <th className="px-4 py-2 border">Category</th>
               <th className="px-4 py-2 border">Description</th>
               <th className="px-4 py-2 border">Issue Date</th>
               <th className="px-4 py-2 border">Revision</th>
@@ -112,6 +120,7 @@ const AdminDocument = () => {
                   />
                 </td>
                 <td className="px-4 py-2 border">{item.document}</td>
+                <td className="px-4 py-2 border">{item.category}</td>
                 <td className="px-4 py-2 border">{item.description}</td>
                 <td className="px-4 py-2 border">{item.issueDate}</td>
                 <td className="px-4 py-2 border">{item.revision}</td>
@@ -125,7 +134,7 @@ const AdminDocument = () => {
                   </span>
                 </td>
                 <td className="px-4 py-2 border sticky right-0 bg-white">
-                  <div className="flex justify-around">
+                  <div className="flex justify-around space-x-2">
                     <button className="text-blue-500 hover:text-blue-700">
                       <FaEye />
                     </button>
