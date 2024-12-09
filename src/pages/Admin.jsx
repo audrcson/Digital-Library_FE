@@ -3,8 +3,8 @@ import AdminSidebar from "../components/Admin/AdminSidebar";
 import Header from "../components/User/Header";
 import AdminDashboard from "../components/Admin/AdminDashboard";
 import AdminDocument from "../components/Admin/AdminDocument";
+import EditUser from "../components/Admin/EditUser";
 import Profile from "../components/User/Profile"; // Import komponen Profile
-import ManageUser from "../components/Admin/ManageUser";
 
 const Admin = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -42,7 +42,7 @@ const Admin = () => {
           {showProfile && <Profile />} {/* Tampilkan Profile */}
           {!showProfile && selectedButton === "Dashboard" && <AdminDashboard />}
           {!showProfile && selectedButton === "Document" && <AdminDocument />}
-          {!showProfile && selectedButton === "Edit User" && <ManageUser />}
+          {!showProfile && selectedButton === "Manage User" && <ManageUser />}
         </div>
       </div>
     </div>
