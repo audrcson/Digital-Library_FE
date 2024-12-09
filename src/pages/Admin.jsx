@@ -3,8 +3,8 @@ import AdminSidebar from "../components/Admin/AdminSidebar";
 import Header from "../components/User/Header";
 import AdminDashboard from "../components/Admin/AdminDashboard";
 import AdminDocument from "../components/Admin/AdminDocument";
-import EditUser from "../components/Admin/EditUser";
 import Profile from "../components/User/Profile"; // Import komponen Profile
+import User from "../components/Admin/User";
 
 const Admin = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -36,13 +36,12 @@ const Admin = () => {
       <div className="flex flex-col w-full">
         <Header
           onHamburgerClick={handleHamburgerClick}
-          onProfileClick={handleProfileClick} // Tambahkan prop untuk Profile
         />
         <div className="mt-[20%] lg:mt-[8%] lg:ml-[23%] lg:w-[77%] p-4">
           {showProfile && <Profile />} {/* Tampilkan Profile */}
           {!showProfile && selectedButton === "Dashboard" && <AdminDashboard />}
           {!showProfile && selectedButton === "Document" && <AdminDocument />}
-          {!showProfile && selectedButton === "Manage User" && <ManageUser />}
+          {!showProfile && selectedButton === "Manage User" && <User />}
         </div>
       </div>
     </div>

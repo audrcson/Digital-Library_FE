@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EditUser = () => {
+const User = () => {
   return (
     <div>
       edittt
@@ -8,4 +8,4 @@ const EditUser = () => {
   )
 }
 
-export default EditUser
+export default User
