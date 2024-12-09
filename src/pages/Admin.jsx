@@ -3,6 +3,7 @@ import AdminSidebar from "../components/Admin/AdminSidebar";
 import Header from "../components/User/Header";
 import AdminDashboard from "../components/Admin/AdminDashboard";
 import AdminDocument from "../components/Admin/AdminDocument";
+import EditUser from "../components/Admin/EditUser";
 
 const Admin = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -25,6 +26,7 @@ const Admin = () => {
         <div className="mt-[20%] lg:mt-[8%] lg:ml-[23%] lg:w-[77%] p-4">
           {selectedButton === "Dashboard" && <AdminDashboard />}
           {selectedButton === "Document" && <AdminDocument />}
+          {selectedButton === "Edit User" && <EditUser />}
         </div>
       </div>
     </div>

@@ -11,9 +11,9 @@ const AdminDocument = () => {
   const [showAddForm, setShowAddForm] = useState(false);
 
   const data = [
-    { id: 1, document: "Document 1", category: "Document Procedur", description: 'Description 1', issueDate: '2024-01-01', revision: 'v1.0', status: 'Available' },
-    { id: 2, document: "Document 2", category: "Document Procedur", description: 'Description 2', issueDate: '2024-02-01', revision: 'v1.1', status: 'Borrowed' },
-    { id: 3, document: "Document 3", category: "Document Procedur", description: 'Description 3', issueDate: '2024-03-01', revision: 'v2.0', status: 'Available' },
+    { id: 1, document: "Document 1", category: "Document Procedur", description: 'Description 1', issueDate: '2024-01-01', revision: 'v1.0', status: 'Available',},
+    { id: 2, document: "Document 2", category: "Document Procedur", description: 'Description 2', issueDate: '2024-02-01', revision: 'v1.1', status: 'Borrowed', borrowedby: 'Jenni' },
+    { id: 3, document: "Document 3", category: "Document Procedur", description: 'Description 3', issueDate: '2024-03-01', revision: 'v2.0', status: 'Available',},
   ];
 
   const handleSelectAll = () => {
@@ -54,12 +54,13 @@ const AdminDocument = () => {
           Add New Document
         </button>
         <button
-          className={`px-4 py-2 rounded ${selectAll ? 'bg-red-500' : 'bg-gray-500'} text-white hover:bg-red-600`}
-          disabled={!selectAll}
-        >
-          <FaTrash className="inline mr-2" />
-          Delete
-        </button>
+  className={`px-4 py-2 rounded ${checkedItems.length === data.length ? 'bg-red-500' : 'bg-gray-500'} text-white`}
+  disabled={checkedItems.length !== data.length} // Tombol hanya aktif jika semua dicentang
+>
+  <FaTrash className="inline mr-2" />
+  Delete
+</button>
+
       </div>
 
       <div className="flex mb-4 justify-between">
@@ -93,7 +94,7 @@ const AdminDocument = () => {
         <table className="min-w-full bg-white rounded-lg border border-gray-200">
           <thead>
             <tr>
-              <th className="px-4 py-2 border">
+              <th className="px-4 py-2 border rounded-xl">
                 <input
                   type="checkbox"
                   className="w-4 h-4"
