@@ -8,7 +8,7 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
   const buttons = [
     { icon: <MdDashboard />, label: "Dashboard" },
     { icon: <IoDocumentText />, label: "Document" },
-    { icon: <FaUserEdit />, label: "Edit User" },
+    { icon: <FaUserEdit />, label: "Manage User" },
   ];
 
   return (

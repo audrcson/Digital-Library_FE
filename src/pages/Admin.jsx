@@ -3,11 +3,13 @@ import AdminSidebar from "../components/Admin/AdminSidebar";
 import Header from "../components/User/Header";
 import AdminDashboard from "../components/Admin/AdminDashboard";
 import AdminDocument from "../components/Admin/AdminDocument";
-import EditUser from "../components/Admin/EditUser";
+import Profile from "../components/User/Profile"; // Import komponen Profile
+import ManageUser from "../components/Admin/ManageUser";
 
 const Admin = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedButton, setSelectedButton] = useState(null); 
+  const [selectedButton, setSelectedButton] = useState(null);
+  const [showProfile, setShowProfile] = useState(false); // State untuk Profile
 
   const handleHamburgerClick = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -15,18 +17,32 @@ const Admin = () => {
 
   const handleButtonClick = (buttonLabel) => {
     setSelectedButton(buttonLabel);
+    setShowProfile(false); // Pastikan Profile tidak ditampilkan
     setIsSidebarOpen(false);
+  };
+
+  const handleProfileClick = () => {
+    setShowProfile(true); // Tampilkan Profile
+    setSelectedButton(null); // Sembunyikan komponen lain
   };
 
   return (
     <div className="flex h-screen bg-[#fafafa]">
-      <AdminSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} onButtonClick={handleButtonClick} />
+      <AdminSidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        onButtonClick={handleButtonClick}
+      />
       <div className="flex flex-col w-full">
-        <Header onHamburgerClick={handleHamburgerClick} />
+        <Header
+          onHamburgerClick={handleHamburgerClick}
+          onProfileClick={handleProfileClick} // Tambahkan prop untuk Profile
+        />
         <div className="mt-[20%] lg:mt-[8%] lg:ml-[23%] lg:w-[77%] p-4">
-          {selectedButton === "Dashboard" && <AdminDashboard />}
-          {selectedButton === "Document" && <AdminDocument />}
-          {selectedButton === "Edit User" && <EditUser />}
+          {showProfile && <Profile />} {/* Tampilkan Profile */}
+          {!showProfile && selectedButton === "Dashboard" && <AdminDashboard />}
+          {!showProfile && selectedButton === "Document" && <AdminDocument />}
+          {!showProfile && selectedButton === "Edit User" && <ManageUser />}
         </div>
       </div>
     </div>
