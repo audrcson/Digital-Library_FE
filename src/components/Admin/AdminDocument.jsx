@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import { FaPlus, FaTrash, FaSearch, FaEdit, FaEye } from 'react-icons/fa';
 import { LuArrowUpDown } from "react-icons/lu";
 import AddNewDocument from './AddNewDocument';
+import ViewDocument from './ViewDocument'; // Import komponen ViewDocument
 
 const AdminDocument = () => {
-  const [selectAll, setSelectAll] = useState(false); 
-  const [checkedItems, setCheckedItems] = useState([]); 
-  const [search, setSearch] = useState(''); 
+  const [selectAll, setSelectAll] = useState(false);
+  const [checkedItems, setCheckedItems] = useState([]);
+  const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
+  const [showViewModal, setShowViewModal] = useState(false); 
+  const [selectedDocument, setSelectedDocument] = useState(null); 
+  
 
   const data = [
     { id: 1, document: "Document 1", category: "Document Procedur", description: 'Description 1', issueDate: '2024-01-01', revision: 'v1.0', status: 'Available',},
@@ -18,19 +22,13 @@ const AdminDocument = () => {
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
-    if (!selectAll) {
-      setCheckedItems(data.map((item) => item.id));
-    } else {
-      setCheckedItems([]);
-    }
+    setCheckedItems(!selectAll ? data.map((item) => item.id) : []);
   };
 
   const handleCheckboxChange = (id) => {
-    if (checkedItems.includes(id)) {
-      setCheckedItems(checkedItems.filter((item) => item !== id)); 
-    } else {
-      setCheckedItems([...checkedItems, id]); 
-    }
+    setCheckedItems(checkedItems.includes(id)
+      ? checkedItems.filter((item) => item !== id)
+      : [...checkedItems, id]);
   };
 
   const filteredData = data.filter((item) => {
@@ -38,6 +36,11 @@ const AdminDocument = () => {
     const statusMatch = statusFilter ? item.status === statusFilter : true;
     return searchMatch && statusMatch;
   });
+
+  const handleViewClick = (document) => {
+    setSelectedDocument(document); // Set data dokumen yang dipilih
+    setShowViewModal(true); // Tampilkan modal
+  };
 
   return (
     <div className="overflow-auto px-5">
@@ -47,20 +50,23 @@ const AdminDocument = () => {
 
       <div className="flex justify-between mb-4">
         <button
-          className="px-4 py-2 bg-[#3a99ff] text-white source-sans-3-regular rounded"
+          className="px-4 py-2 bg-[#3a99ff] text-white source-sans-3-regular rounded transition-transform duration-200 active:scale-95 hover:opacity-90"
           onClick={() => setShowAddForm(true)}
         >
           <FaPlus className="inline mr-2" />
           Add New Document
         </button>
         <button
-  className={`px-4 py-2 rounded ${checkedItems.length === data.length ? 'bg-red-500' : 'bg-gray-500'} text-white`}
-  disabled={checkedItems.length !== data.length} // Tombol hanya aktif jika semua dicentang
->
-  <FaTrash className="inline mr-2" />
-  Delete
-</button>
-
+          className={`px-4 py-2 rounded text-white ${
+            checkedItems.length === data.length
+              ? 'bg-red-500 transition-transform duration-200 active:scale-95 hover:opacity-90'
+              : 'bg-gray-500 cursor-default'
+          }`}
+          disabled={checkedItems.length !== data.length}
+        >
+          <FaTrash className="inline mr-2" />
+          Delete
+        </button>
       </div>
 
       <div className="flex mb-4 justify-between">
@@ -68,26 +74,26 @@ const AdminDocument = () => {
           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           <input
             type="text"
-            className="pl-10 px-4 py-2 border border-gray-300 rounded-lg w-full"
+            className="pl-10 px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none"
             placeholder="Search by document name"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
 
-        <select
-        className="px-4 py-2 border border-gray-300 rounded-lg w-1/4"
-        value={statusFilter}
-        onChange={(e) => setStatusFilter(e.target.value)}
-        >
-          <option value="" disabled selected hidden>
-            <LuArrowUpDown />
-            Sort by
-          </option>
-          <option value="">All Status</option>
-          <option value="Available">Available</option>
-          <option value="Borrowed">Borrowed</option>
-        </select>
+        <div className="relative w-1/5 flex items-center">
+          <LuArrowUpDown className="absolute left-6 text-gray-500" />
+          <select
+            className="appearance-none pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none cursor-pointer"
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+          >
+            <option value="" disabled hidden>Sort by</option>
+            <option value="">All Status</option>
+            <option value="Available">Available</option>
+            <option value="Borrowed">Borrowed</option>
+          </select>
+        </div>
       </div>
 
       <div className="overflow-x-auto">
@@ -108,7 +114,8 @@ const AdminDocument = () => {
               <th className="px-4 py-2 border">Issue Date</th>
               <th className="px-4 py-2 border">Revision</th>
               <th className="px-4 py-2 border">Status</th>
-              <th className="px-4 py-2 border sticky top-0 right-0 bg-white w-1/6 text-center">Action</th>
+              <th className="px-4 py-2 border">Borrowed By</th>
+              <th className="px-4 py-2 border">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -132,19 +139,23 @@ const AdminDocument = () => {
                     className={`${
                       item.status === 'Available' ? 'text-green-500' : 'text-red-500'
                     } font-semibold`}
-                    >
+                  >
                     {item.status}
                   </span>
                 </td>
-                <td className="px-2 py-2 border sticky right-0 bg-white">
-                  <div className="flex justify-around space-x-2 sm:space-x-4">
-                    <button className="text-white hover:text-blue-600 bg-gray-400 px-2 py-1 rounded">
+                <td className="px-4 py-2 border">{item.borrowedby}</td>
+                <td className="px-4 py-2 border">
+                  <div className="flex space-x-2">
+                    <button
+                      className="text-white bg-gray-400 px-2 py-1 rounded hover:bg-blue-600"
+                      onClick={() => handleViewClick(item)}
+                    >
                       <FaEye />
                     </button>
-                    <button className="text-white hover:text-blue-600 bg-gray-400 px-2 py-1 rounded">
+                    <button className="text-white bg-gray-400 px-2 py-1 rounded hover:bg-blue-600">
                       <FaEdit />
                     </button>
-                    <button className="text-white hover:text-blue-600 bg-gray-400 px-2 py-1 rounded">
+                    <button className="text-white bg-gray-400 px-2 py-1 rounded hover:bg-red-600">
                       <FaTrash />
                     </button>
                   </div>
@@ -154,7 +165,14 @@ const AdminDocument = () => {
           </tbody>
         </table>
       </div>
+
       {showAddForm && <AddNewDocument onClose={() => setShowAddForm(false)} />}
+      {showViewModal && (
+        <ViewDocument
+          document={selectedDocument}
+          onClose={() => setShowViewModal(false)}
+        />
+      )}
     </div>
   );
 };
