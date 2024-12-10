@@ -117,7 +117,7 @@ const AdminDocument = () => {
           />
         </div>
 
-        <div className="relative w-1/5">
+        <div className="relative w-1/3 lg:w-1/5">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <LuArrowUpDown className="text-gray-400 scale-120" />
           </div>
@@ -136,7 +136,6 @@ const AdminDocument = () => {
             <option value="Borrowed">Borrowed</option>
           </select>
         </div>
-
       </div>
 
       <div className="overflow-x-auto scrollbar-hide">

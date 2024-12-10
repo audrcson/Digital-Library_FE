@@ -1,30 +1,24 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 1,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
+  const handleLogin = () => {
+    // Simulasikan autentikasi
+    if (username && password) {
+      navigate("/dashboard"); // Arahkan ke Dashboard jika login berhasil
+    } else {
+      alert("Please fill in both fields!");
+    }
   };
 
   return (
@@ -55,7 +49,8 @@ const Login = () => {
               </h1>
               <input
                 type="text"
-                name="email"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="input input-bordered w-full bg-transparent border-2 border-[#73A0C8] py-2 px-4 rounded-md"
               />
             </div>
@@ -66,7 +61,8 @@ const Login = () => {
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  name="pass"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="input input-bordered w-full bg-transparent border-2 border-[#73A0C8] py-2 px-4 rounded-md"
                 />
                 {showPassword ? (
@@ -82,12 +78,13 @@ const Login = () => {
                 )}
               </div>
             </div>
-            <div className="pt-8 ">
-            <button
-              className="btn text-lg text-white w-full xl:w-160 py-2 rounded-md source-sans-3-semibold bg-[#73A0C8] transition-transform duration-200 active:scale-95 hover:opacity-90"
-            >
-              Login
-            </button>
+            <div className="pt-8">
+              <button
+                onClick={handleLogin}
+                className="btn text-lg text-white w-full xl:w-160 py-2 rounded-md source-sans-3-semibold bg-[#73A0C8] transition-transform duration-200 active:scale-95 hover:opacity-90"
+              >
+                Login
+              </button>
             </div>
           </div>
         </div>
