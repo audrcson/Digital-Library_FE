@@ -88,41 +88,41 @@ const AdminDocument = () => {
 
       <div className="flex justify-between mb-4">
         <button
-          className="px-4 py-2 bg-[#3a99ff] text-white source-sans-3-regular rounded-md transition-transform duration-200 active:scale-95 hover:opacity-90"
+          className="px-4 py-2 bg-[rgb(94,150,214)] text-white source-sans-3-regular rounded-md flex items-center transition-transform duration-200 active:scale-95 hover:opacity-90"
           onClick={() => setShowAddForm(true)}
         >
-          <FaPlus className="inline mr-2" />
+          <FaPlus className="mr-2" />
           Add New Document
         </button>
         <button
-          className={`px-4 py-2 rounded ${
+          className={`px-4 py-2 rounded source-sans-3-regular ${
             checkedItems.length === data.length ? 'bg-red-500' : 'bg-gray-500'
-          } text-white`}
+          } text-white flex items-center`}
           disabled={checkedItems.length !== data.length}
         >
-          <FaTrash className="inline mr-2" />
+          <FaTrash className="mr-2" />
           Delete
         </button>
       </div>
 
-      <div className="flex mb-4 justify-between">
+      <div className="flex mb-6 justify-between">
         <div className="relative w-1/2">
-          <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+          <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           <input
             type="text"
-            className="pl-10 px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none"
+            className="pl-10 px-4 py-2 source-sans-3-regular border border-gray-300 rounded-lg w-full focus:outline-none"
             placeholder="Search by document name"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
 
-        <div className="relative w-1/4">
+        <div className="relative w-1/5">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <LuArrowUpDown className="text-gray-500" />
+            <LuArrowUpDown className="text-gray-400 scale-120" />
           </div>
           <select
-            className="px-10 py-2 border border-gray-300 rounded-lg w-full appearance-none focus:outline-none cursor-pointer"
+            className="px-10 py-2 source-sans-3-regular text-gray-400 border border-gray-300 rounded-lg w-full appearance-none focus:outline-none cursor-pointer"
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
           >
@@ -139,11 +139,12 @@ const AdminDocument = () => {
 
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white rounded-lg border border-gray-200 table-fixed">
-          <thead>
+      <div className="overflow-x-auto scrollbar-hide">
+        <table 
+          className="min-w-full rounded-3xl border border-gray-200 table-fixed">
+            <thead className="bg-[rgb(112,168,233)]">
             <tr>
-              <th className="w-20 px-4 py-2 border sticky top-0 left-0 bg-white rounded whitespace-nowrap">
+              <th className="w-20 px-4 py-2 border sticky top-0 left-0 rounded whitespace-nowrap">
                 <input
                   type="checkbox"
                   className="w-4 h-4"
@@ -151,70 +152,70 @@ const AdminDocument = () => {
                   onChange={handleSelectAll}
                 />
               </th>
-              <th className="w-44 px-4 py-2 border sticky top-0 left-10 bg-white whitespace-nowrap">
+              <th className="w-44 px-4 py-2 source-sans-3-semibold border sticky top-0 left-10 whitespace-nowrap">
                 Document Name
               </th>
-              <th className="w-40 px-4 py-2 border whitespace-nowrap">Category</th>
-              <th className="w-40 px-4 py-2 border whitespace-nowrap">Description</th>
-              <th className="w-40 px-4 py-2 border whitespace-nowrap">Issue Date</th>
-              <th className="w-40 px-4 py-2 border whitespace-nowrap">Revision</th>
-              <th className="w-40 px-4 py-2 border whitespace-nowrap">Status</th>
-              <th className="w-40 px-4 py-2 border whitespace-nowrap">Borrowed By</th>
-              <th className="w-40 px-4 py-2 border sticky top-0 right-0 bg-white text-center whitespace-nowrap">
+              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Category</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Description</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Issue Date</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Revision</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Status</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Borrowed By</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold border sticky top-0 right-0  text-center whitespace-nowrap">
                 Action
               </th>
             </tr>
-          </thead>
-          <tbody>
-            {filteredData.map((item) => (
-              <tr key={item.id} className="border-t">
-                <td className="w-20 px-4 py-2 border sticky top-0 left-0 bg-white border-r">
-                  <input
-                    type="checkbox"
-                    className="w-4 h-4"
-                    checked={checkedItems.includes(item.id)}
-                    onChange={() => handleCheckboxChange(item.id)}
-                  />
-                </td>
-                <td className="w-40 px-4 py-2 border sticky top-0 left-10 bg-white border-r text-center">
-                  {item.document}
-                </td>
-                <td className="w-40 px-4 py-2 border text-center">{item.category}</td>
-                <td className="w-40 px-4 py-2 border text-center">{item.description}</td>
-                <td className="w-40 px-4 py-2 border text-center">{item.issueDate}</td>
-                <td className="w-40 px-4 py-2 border text-center">{item.revision}</td>
-                <td className="w-40 px-4 py-2 border text-center">
-                  <span
-                    className={`${
-                      item.status === 'Available' ? 'text-green-500' : 'text-red-500'
-                    } font-semibold`}
-                  >
-                    {item.status}
-                  </span>
-                </td>
-                <td className="w-40 px-4 py-2 border text-center">{item.borrowedby}</td>
-                <td className="w-40 px-2 py-2 border sticky right-0 bg-white border-l text-center">
-                  <div className="flex justify-around space-x-2 sm:space-x-4">
-                    <button
-                      className="text-white bg-gray-400 px-2 py-1 rounded hover:bg-blue-600"
-                      onClick={() => handleViewClick(item)}
+            </thead>
+            <tbody>
+              {filteredData.map((item) => (
+                <tr key={item.id} className="border-t">
+                  <td className="w-20 px-4 py-2 border sticky top-0 left-0 border-r">
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4"
+                      checked={checkedItems.includes(item.id)}
+                      onChange={() => handleCheckboxChange(item.id)}
+                    />
+                  </td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm sticky top-0 left-10 bg-white border-r text-center">
+                    {item.document}
+                  </td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">{item.category}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">{item.description}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">{item.issueDate}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">{item.revision}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">
+                    <span
+                      className={`${
+                        item.status === 'Available' ? 'text-green-500' : 'text-red-500'
+                      } font-semibold`}
                     >
-                      <FaEye />
-                    </button>
-                    <button
-                      className="text-white bg-gray-400 px-2 py-1 rounded hover:bg-blue-600"
-                      onClick={() => handleEditClick(item)}
-                    >
-                      <FaEdit />
-                    </button>
-                    <button className="text-white hover:bg-red-600 bg-gray-400 px-2 py-1 rounded">
-                      <FaTrash />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+                      {item.status}
+                    </span>
+                  </td>
+                  <td className="w-40 px-4 py-2 border text-center">{item.borrowedby}</td>
+                  <td className="w-40 px-2 py-2 border sticky right-0 bg-white border-l text-center">
+                    <div className="flex justify-around space-x-2 sm:space-x-4">
+                      <button
+                        className="text-white bg-gray-400 px-2 py-1 rounded hover:bg-blue-600"
+                        onClick={() => handleViewClick(item)}
+                      >
+                        <FaEye />
+                      </button>
+                      <button
+                        className="text-white bg-gray-400 px-2 py-1 rounded hover:bg-blue-600"
+                        onClick={() => handleEditClick(item)}
+                      >
+                        <FaEdit />
+                      </button>
+                      <button className="text-white hover:bg-red-600 bg-gray-400 px-2 py-1 rounded">
+                        <FaTrash />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
         </table>
       </div>
 
