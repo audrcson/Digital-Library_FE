@@ -141,25 +141,25 @@ const AdminDocument = () => {
       <div className="overflow-x-auto scrollbar-hide">
         <table 
           className="min-w-full rounded-3xl border border-gray-200 table-fixed">
-            <thead className="bg-[rgb(112,168,233)]">
-            <tr>
-              <th className="w-20 px-4 py-2 border sticky top-0 left-0 rounded whitespace-nowrap">
-                <input
-                  type="checkbox"
-                  className="w-4 h-4"
-                  checked={selectAll}
-                  onChange={handleSelectAll}
-                />
-              </th>
-              <th className="w-44 px-4 py-2 source-sans-3-semibold border sticky top-0 left-10 whitespace-nowrap">
-                Document Name
-              </th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Category</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Description</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Issue Date</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Revision</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Status</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold border whitespace-nowrap">Borrowed By</th>
+            <thead className="bg-[rgb(112,169,233)]">
+              <tr>
+                <th className="w-20 px-4 py-2 border sticky top-0 left-0 rounded whitespace-nowrap z-20">
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4"
+                    checked={selectAll}
+                    onChange={handleSelectAll}
+                  />
+                </th>
+                <th className="w-44 px-4 py-2 source-sans-3-semibold border sticky top-0 left-10 whitespace-nowrap z-20">
+                  Document Name
+                </th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Category</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Description</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Issue Date</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Revision</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Status</th>
+              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Borrowed By</th>
               <th className="w-40 px-4 py-2 source-sans-3-semibold border sticky top-0 right-0  text-center whitespace-nowrap">
                 Action
               </th>
@@ -192,7 +192,7 @@ const AdminDocument = () => {
                       {item.status}
                     </span>
                   </td>
-                  <td className="w-40 px-4 py-2 border text-center">{item.borrowedby}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular text-sm border text-center">{item.borrowedby}</td>
                   <td className="w-40 px-2 py-2 border sticky right-0 bg-white border-l text-center">
                     <div className="flex justify-around space-x-2 sm:space-x-4">
                       <button
