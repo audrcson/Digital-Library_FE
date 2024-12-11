@@ -141,9 +141,9 @@ const AdminDocument = () => {
       <div className="overflow-x-auto scrollbar-hide">
         <table 
           className="min-w-full rounded-3xl border border-gray-200 table-fixed">
-            <thead className="bg-[rgb(112,169,233)]">
+            <thead>
               <tr>
-                <th className="w-20 px-4 py-2 border sticky top-0 left-0 rounded whitespace-nowrap z-20">
+                <th className="w-20 px-4 py-2 bg-[#70A8E9] border sticky top-0 left-0 rounded whitespace-nowrap">
                   <input
                     type="checkbox"
                     className="w-4 h-4"
@@ -151,24 +151,25 @@ const AdminDocument = () => {
                     onChange={handleSelectAll}
                   />
                 </th>
-                <th className="w-44 px-4 py-2 source-sans-3-semibold border sticky top-0 left-10 whitespace-nowrap z-20">
+                <th className="w-44 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold border sticky top-0 left-10 whitespace-nowrap">
                   Document Name
                 </th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Category</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Description</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Issue Date</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Revision</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Status</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold whitespace-nowrap">Borrowed By</th>
-              <th className="w-40 px-4 py-2 source-sans-3-semibold border sticky top-0 right-0  text-center whitespace-nowrap">
-                Action
-              </th>
-            </tr>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Category</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Description</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Issue Date</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Revision</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Status</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Borrowed By</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold border sticky top-0 right-0  text-center whitespace-nowrap">
+                  Action
+                </th>
+              </tr>
             </thead>
+
             <tbody>
               {filteredData.map((item) => (
                 <tr key={item.id} className="border-t">
-                  <td className="w-20 px-4 py-2 border sticky top-0 left-0 border-r">
+                  <td className="w-20 px-4 py-2 border sticky top-0 left-0 bg-white border-r">
                     <input
                       type="checkbox"
                       className="w-4 h-4"
@@ -179,11 +180,11 @@ const AdminDocument = () => {
                   <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm sticky top-0 left-10 bg-white border-r text-center">
                     {item.document}
                   </td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">{item.category}</td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">{item.description}</td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">{item.issueDate}</td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">{item.revision}</td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center">
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.category}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.description}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.issueDate}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.revision}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">
                     <span
                       className={`${
                         item.status === 'Available' ? 'text-green-500' : 'text-red-500'
@@ -192,7 +193,10 @@ const AdminDocument = () => {
                       {item.status}
                     </span>
                   </td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular text-sm border text-center">{item.borrowedby}</td>
+                  <td 
+                    className="w-40 px-4 py-2 source-sans-3-regular text-sm text-center bg-white">
+                      {item.status === 'Borrowed' ? item.borrowedby : '-'}
+                  </td>
                   <td className="w-40 px-2 py-2 border sticky right-0 bg-white border-l text-center">
                     <div className="flex justify-around space-x-2 sm:space-x-4">
                       <button

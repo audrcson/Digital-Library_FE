@@ -5,7 +5,7 @@ import { IoLogOut } from "react-icons/io5";
 import LogoutModal from "./LogoutModal";
 import Profile from "./Profile"; // Import komponen Profile
 
-const Header = ({ onHamburgerClick }) => {
+const Header = ({ onHamburgerClick, onProfileClick }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showProfilePage, setShowProfilePage] = useState(false); // State untuk menampilkan Profile

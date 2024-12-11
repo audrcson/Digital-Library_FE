@@ -26,19 +26,33 @@ const Admin = () => {
     setSelectedButton(null); // Sembunyikan komponen lain
   };
 
+  const handleBackProfile = () => {
+    setShowProfile(false); // Menyembunyikan Profile saat klik tombol kembali
+  };
+
   return (
     <div className="flex h-screen bg-[#fafafa]">
+      {/* Sidebar tetap muncul */}
       <AdminSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
         onButtonClick={handleButtonClick}
       />
-      <div className="flex flex-col w-full">
+
+      <div className="flex flex-col w-full relative">
+        {/* Header tetap muncul */}
         <Header
           onHamburgerClick={handleHamburgerClick}
+          onProfileClick={handleProfileClick} // Fungsi untuk membuka Profile
         />
+
         <div className="mt-[20%] lg:mt-[8%] lg:ml-[23%] lg:w-[77%] p-4">
-          {showProfile && <Profile />} {/* Tampilkan Profile */}
+          {/* Menampilkan Profile di atas konten */}
+          {showProfile && (
+            <Profile onBack={handleBackProfile} /> // Pass fungsi untuk kembali
+          )}
+
+          {/* Menampilkan konten lainnya jika Profile tidak ditampilkan */}
           {!showProfile && selectedButton === "Dashboard" && <AdminDashboard />}
           {!showProfile && selectedButton === "Document" && <AdminDocument />}
           {!showProfile && selectedButton === "Manage User" && <User />}
