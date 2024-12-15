@@ -1,7 +1,15 @@
 import React from "react";
 import { FaSignOutAlt, FaTimes } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
-const LogoutModal = ({ onCancel, onLogout }) => {
+const LogoutModal = ({ onCancel }) => {
+  const navigate = useNavigate(); // Inisialisasi navigasi
+
+  const handleLogout = () => {
+    // Tambahkan logika yang diperlukan (misalnya, clear token atau session)
+    navigate("/"); // Navigasi ke halaman login
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity">
       <div className="bg-white p-8 rounded-xl shadow-lg text-center w-80 relative">
@@ -23,7 +31,7 @@ const LogoutModal = ({ onCancel, onLogout }) => {
           </button>
           <button
             className="px-5 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all"
-            onClick={onLogout}
+            onClick={handleLogout}
           >
             Logout
           </button>

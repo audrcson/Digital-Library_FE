@@ -21,6 +21,12 @@ const Login = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin(); // Jalankan fungsi handleLogin saat tombol Enter ditekan
+    }
+  };
+
   return (
     <>
       <div className="flex">
@@ -51,6 +57,7 @@ const Login = () => {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                onKeyDown={handleKeyDown} // Tambahkan event onKeyDown
                 className="input input-bordered w-full bg-transparent border-2 border-[#73A0C8] py-2 px-4 rounded-md"
               />
             </div>
@@ -63,6 +70,7 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  onKeyDown={handleKeyDown} // Tambahkan event onKeyDown
                   className="input input-bordered w-full bg-transparent border-2 border-[#73A0C8] py-2 px-4 rounded-md"
                 />
                 {showPassword ? (
