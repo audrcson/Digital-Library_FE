@@ -1,50 +1,50 @@
-import React, { useState } from 'react';
-import { FaPlus, FaTrash, FaSearch, FaEye, FaEdit } from 'react-icons/fa';
-import { LuArrowUpDown } from 'react-icons/lu';
-import AddNewDocument from './AddNewDocument';
-import ViewDocument from './ViewDocument';
-import EditDocument from './EditDocument';
+import React, { useState } from "react";
+import { FaPlus, FaTrash, FaSearch, FaEye, FaEdit } from "react-icons/fa";
+import { LuArrowUpDown } from "react-icons/lu";
+import AddNewDocument from "./AddNewDocument";
+import ViewDocument from "./ViewDocument";
+import EditDocument from "./EditDocument";
 
 const AdminDocument = () => {
+  const [data, setData] = useState([
+    {
+      id: 1,
+      document: "Document 1",
+      category: "Document Procedur",
+      description: "Description 1",
+      issueDate: "2024-01-01",
+      revision: "v1.0",
+      status: "Available",
+    },
+    {
+      id: 2,
+      document: "Document 2",
+      category: "Document Procedur",
+      description: "Description 2",
+      issueDate: "2024-02-01",
+      revision: "v1.1",
+      status: "Borrowed",
+      borrowedby: "Jenni",
+    },
+    {
+      id: 3,
+      document: "Document 3",
+      category: "Document Procedur",
+      description: "Description 3",
+      issueDate: "2024-03-01",
+      revision: "v2.0",
+      status: "Available",
+    },
+  ]);
+
   const [selectAll, setSelectAll] = useState(false);
   const [checkedItems, setCheckedItems] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [showAddForm, setShowAddForm] = useState(false);
   const [showViewModal, setShowViewModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState(null);
-
-  const data = [
-    {
-      id: 1,
-      document: 'Document 1',
-      category: 'Document Procedur',
-      description: 'Description 1',
-      issueDate: '2024-01-01',
-      revision: 'v1.0',
-      status: 'Available',
-    },
-    {
-      id: 2,
-      document: 'Document 2',
-      category: 'Document Procedur',
-      description: 'Description 2',
-      issueDate: '2024-02-01',
-      revision: 'v1.1',
-      status: 'Borrowed',
-      borrowedby: 'Jenni',
-    },
-    {
-      id: 3,
-      document: 'Document 3',
-      category: 'Document Procedur',
-      description: 'Description 3',
-      issueDate: '2024-03-01',
-      revision: 'v2.0',
-      status: 'Available',
-    },
-  ];
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
@@ -53,6 +53,13 @@ const AdminDocument = () => {
     } else {
       setCheckedItems([]);
     }
+  };
+
+  const handleDeleteDocuments = () => {
+    const updatedData = data.filter((item) => !checkedItems.includes(item.id));
+    setData(updatedData);
+    setCheckedItems([]);
+    setSelectAll(false);
   };
 
   const filteredData =
@@ -96,12 +103,13 @@ const AdminDocument = () => {
         </button>
         <button
           className={`px-4 py-2 rounded source-sans-3-regular ${
-            checkedItems.length === data.length ? 'bg-red-500' : 'bg-gray-500'
+            checkedItems.length ? "bg-red-500" : "bg-gray-500"
           } text-white flex items-center`}
-          disabled={checkedItems.length !== data.length}
+          disabled={!checkedItems.length}
+          onClick={handleDeleteDocuments}
         >
           <FaTrash className="mr-2" />
-          Delete
+          Delete Selected
         </button>
       </div>
 
