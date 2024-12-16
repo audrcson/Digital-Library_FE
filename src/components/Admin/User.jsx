@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import AddNewUser from './AddNewUser'; // Import komponen baru
 import { FaPlus, FaTrash, FaSearch } from 'react-icons/fa';
 import { LuArrowUpDown } from 'react-icons/lu';
 
 const User = () => {
-  // State untuk mengelola daftar pengguna dan fitur terkait
   const [users, setUsers] = useState([
     { id: 1, name: 'John Doe', email: 'john.doe@example.com', status: 'Active' },
     { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', status: 'Inactive' },
@@ -15,7 +15,11 @@ const User = () => {
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
+
+  // Fungsi untuk menangani penambahan user baru
+  const handleAddUser = (newUser) => {
+    setUsers([...users, newUser]); // Tambahkan user baru ke daftar
+  };
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
@@ -48,7 +52,7 @@ const User = () => {
       <div className="flex justify-between mb-4">
         <button
           className="px-4 py-2 bg-blue-500 text-white source-sans-3-regular rounded-md flex items-center transition-transform duration-200 active:scale-95 hover:opacity-90"
-          onClick={() => setShowAddForm(true)}
+          onClick={() => setShowAddForm(true)} // Buka form Add User
         >
           <FaPlus className="mr-2" />
           Add New User
@@ -139,6 +143,14 @@ const User = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Render AddNewUser Form */}
+      {showAddForm && (
+        <AddNewUser
+          onClose={() => setShowAddForm(false)} // Tutup form
+          onAddUser={handleAddUser} // Tambah pengguna baru
+        />
+      )}
     </div>
   );
 };
