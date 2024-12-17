@@ -61,8 +61,9 @@ const Profile = ({ onBack }) => {
       <div className="space-y-6">
         {[
           { label: "NIK", name: "nik", value: profile.nik, icon: <FaIdCard /> },
-          { label: "Department", name: "department", value: profile.department, icon: <FaBuilding /> },
           { label: "Position", name: "position", value: profile.position, icon: <FaUserAlt /> },
+          
+          { label: "Department", name: "department", value: profile.department, icon: <FaBuilding /> },
           { label: "Email", name: "email", value: profile.email, icon: <FaEnvelope /> },
           { label: "Phone", name: "phone", value: profile.phone, icon: <FaPhone /> },
         ].map((item, index) => (
