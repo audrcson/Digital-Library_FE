@@ -66,12 +66,12 @@ const Dashbord = () => {
   };
 
   const handleProfileClick = () => {
-    setShowProfile(true); // Tampilkan Profile
-    setSelectedButton(null); // Sembunyikan tabel lainnya
+    setShowProfile(true); 
+    setSelectedButton(null); 
   };
 
   const handleBackProfile = () => {
-    setShowProfile(false); // Sembunyikan Profile saat tombol kembali diklik
+    setShowProfile(false); 
   };
 
   return (
@@ -85,13 +85,10 @@ const Dashbord = () => {
       <div className="flex flex-col w-full">
         <Header
           onHamburgerClick={handleHamburgerClick}
-          onProfileClick={handleProfileClick} // Tambahkan fungsi untuk Profile
+          onProfileClick={handleProfileClick}
         />
-        <div className="mt-[20%] lg:mt-[8%] lg:ml-[23%] lg:w-[77%] p-4">
-          {/* Jika Profile ditampilkan */}
+        <div className="mt-[16%] lg:mt-[7%] lg:ml-[23%] lg:w-[77%] p-4">
           {showProfile && <Profile onBack={handleBackProfile} />}
-
-          {/* Jika Profile tidak ditampilkan, tampilkan tabel */}
           {!showProfile && <Table data={tableData[selectedButton] || []} />}
         </div>
       </div>

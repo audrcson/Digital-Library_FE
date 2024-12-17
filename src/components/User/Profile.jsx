@@ -3,7 +3,7 @@ import { FaUserAlt, FaBuilding, FaIdCard } from "react-icons/fa";
 
 const Profile = ({ onBack }) => {
   return (
-    <div className="lg:ml-[3%] lg:w-[77%] p-6 bg-white shadow-md rounded-md">
+    <div className="p-6 bg-white shadow-md rounded-md">
       {/* Tombol Back */}
       <button
         onClick={onBack}
