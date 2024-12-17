@@ -13,7 +13,6 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    // Simulasikan autentikasi
     if (username && password) {
       navigate("/dashboard"); // Arahkan ke Dashboard jika login berhasil
     } else {
