@@ -40,7 +40,7 @@ const Table = ({ data }) => {
           ) : (
             <tr>
               <td className="px-4 py-2 border text-center" colSpan="4">
-                No Data Available
+               Choose Document
               </td>
             </tr>
           )}
