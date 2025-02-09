@@ -15,6 +15,15 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
     { icon: <IoLogOut />, label: "Logout" }, // Tambah Logout di sini
   ];
 
+  const handleButtonClick = (label) => {
+    if (label === "Logout") {
+      setShowLogoutModal(true); // Tampilkan modal logout
+    } else {
+      setActiveButton(label);
+      onButtonClick(label);
+    }
+  };
+
   return (
     <>
       {/* Sidebar */}
@@ -44,14 +53,7 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
                   ? "bg-[rgba(66,112,165,0.96)] text-white" 
                   : "bg-[#1A2E3E] text-white"
               }`}
-              onClick={() => {
-                if (button.label === "Logout") {
-                  setShowLogoutModal(true); // Tampilkan modal logout
-                } else {
-                  setActiveButton(button.label);
-                  onButtonClick(button.label);
-                }
-              }}
+              onClick={() => handleButtonClick(button.label)}
             >
               <span className="text-xl">{button.icon}</span>
               <span>{button.label}</span>
@@ -73,7 +75,7 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
         ></div>
       )}
 
-      {/* Modal Logout */}
+      {/* Modal Logout (Pastikan dirender di semua tampilan) */}
       {showLogoutModal && (
         <LogoutModal onCancel={() => setShowLogoutModal(false)} />
       )}
