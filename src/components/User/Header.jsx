@@ -74,13 +74,12 @@ const Header = ({ onHamburgerClick, onProfileClick }) => {
                     onProfileClick(); // Gunakan callback untuk menampilkan Profile
                     setShowDropdown(false); // Tutup dropdown
                   }}
-                >
-                  <div className="bg-gray-200 p-2 rounded-lg mr-2">
-                    <FaUser className="text-[rgb(94,150,214)]" />
-                  </div>
-                  Profile
-                </button>
-
+                  >
+                    <div className="bg-gray-200 p-2 rounded-lg mr-2">
+                      <FaUser className="text-[rgb(94,150,214)]" />
+                    </div>
+                    Profile
+                  </button>
 
                   <button
                     className="w-full px-4 py-2 text-left flex items-center hover:bg-gray-100"

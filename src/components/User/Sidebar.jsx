@@ -62,7 +62,7 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
                   {item.buttons.map((btnLabel, btnIndex) => (
                     <button
                       key={btnIndex}
-                      className="w-full px-4 py-2 bg-[rgba(66,112,165,0.96)] text-white rounded source-sans-3-regular text-center transition-transform duration-200 active:scale-95 hover:opacity-90"
+                      className="w-full px-4 py-2 bg-[rgba(66,120,180,0.96)] text-white rounded source-sans-3-regular text-center transition-transform duration-200 active:scale-95 hover:opacity-90"
                       onClick={() => handleButtonClick(`${item.title}-${btnLabel}`)}
                     >
                       {btnLabel}
@@ -102,8 +102,8 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
       {/* Modal Logout */}
       {isLogoutModalOpen && <LogoutModal onCancel={() => setIsLogoutModalOpen(false)} />}
       {showProfile && (
-        <div className="fixed inset-0 bg-white p-4 z-50 overflow-auto">
-          <Profile onBack={() => setShowProfile(false)} /> {/* Memanggil Profile dengan fungsi "Back" */}
+        <div className="fixed inset-0 bg-white p-4 z-50 overflow-auto mt-16">
+          <Profile onBack={() => setShowProfile(false)} />
         </div>
       )}
     </>
