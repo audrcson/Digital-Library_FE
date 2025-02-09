@@ -8,7 +8,7 @@ import User from "../components/Admin/User";
 
 const Admin = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedButton, setSelectedButton] = useState(null);
+  const [selectedButton, setSelectedButton] = useState("Dashboard"); // Default ke Dashboard
   const [showProfile, setShowProfile] = useState(false); // State untuk Profile
 
   const handleHamburgerClick = () => {
