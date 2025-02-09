@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [username, setUsername] = useState("");
+  const [nik, setNik] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -13,7 +14,7 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    if (username && password) {
+    if (nik && password) {
       navigate("/dashboard"); // Arahkan ke Dashboard jika login berhasil
     } else {
       alert("Please fill in both fields!");
@@ -50,12 +51,12 @@ const Login = () => {
             </h3>
             <div className="flex flex-col mt-5 gap-1">
               <h1 className="text-base source-sans-3-semibold text-black">
-                NIK or Username
+                NIK
               </h1>
               <input
                 type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={nik}
+                onChange={(e) => setNik(e.target.value)}
                 onKeyDown={handleKeyDown} // Tambahkan event onKeyDown
                 className="input input-bordered w-full bg-transparent border-2 border-[#73A0C8] py-2 px-4 rounded-md"
               />

@@ -8,10 +8,11 @@ const Dashbord = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedButton, setSelectedButton] = useState(null);
   const [showProfile, setShowProfile] = useState(false); // State untuk menampilkan Profile
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const tableData = {
     "Document Procedure-MEM-DP-P602_4": [
-      { doc: "MEM-DP-P602_4", desc: "Link 1", date: "a", rev: "b", fileUrl: "/10-DP-P602_4.pdf" },
+      { doc: "MEM-DP-P602_4", desc: "This document procedure is to define the maintenance of production facilities to achieve conformity to product requirements", date: "Oct 2015", rev: "V.01", fileUrl: "/10-DP-P602_4.pdf" },
     ],
     "Document Procedure-MEM-DP-W602_01": [
       { doc: "MEM-DP-W602_01", desc: "Link 2", date: "a", rev: "b", fileUrl: "/10-DP-W602_01.pdf" },
@@ -29,7 +30,7 @@ const Dashbord = () => {
       { doc: "MEM-MB-BCT", desc: "Link 1", date: "a", rev: "b" },
     ],
     "Document Manual Book-MEM-MB-SFT": [
-      { doc: "MEM-MB-SFT", desc: "Link 1", date: "a", rev: "b" },
+      { doc: "MEM-MB-SFT", desc: "Document Manual Book ", date: "a", rev: "b" },
     ],
     "Document Manual Book-MEM-MB-UTL": [
       { doc: "MEM-MB-UTL", desc: "Link 1", date: "a", rev: "b" },

@@ -26,7 +26,7 @@ const Table = ({ data }) => {
                     {row.doc}
                   </a>
                 </td>
-                <td className="px-4 py-2 border text-center break-words">
+                <td className="px-4 py-4 border text-center break-words">
                   {row.desc}
                 </td>
                 <td className="px-4 py-2 border text-center break-words">
