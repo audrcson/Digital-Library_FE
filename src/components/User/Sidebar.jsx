@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaUser } from "react-icons/fa";
+import Profile from "./Profile"; // Pastikan path sesuai
 import LogoutModal from "./LogoutModal"; // Pastikan LogoutModal tersedia
 
 const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const items = [
@@ -37,7 +39,7 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
         className={`fixed top-[12%] left-0 w-full lg:w-[23%] bg-[#1A2E3E] px-4 py-1 z-40 transform ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:translate-x-0 lg:top-[12%] lg:min-h-screen ${
-          openIndex !== null ? "h-auto" : "h-[40%]"
+          openIndex !== null ? "h-auto" : "h-[50%]"
         } pb-6`}
       >
         <div className="space-y-3 pt-6">
@@ -72,21 +74,38 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
           ))}
         </div>
 
-        {/* Tombol Logout untuk Mobile */}
-        <div className="lg:hidden py-3 flex justify-center">
+        {/* Tombol Profile untuk Mobile */}
+        <div className="lg:hidden pt-5 mb-3 flex justify-center">
           <button
-            className="w-full px-4 py-2 bg-[rgba(66,112,165,0.96)] text-white rounded source-sans-3-regular text-left transition-transform duration-200 active:scale-95 hover:opacity-90 flex items-center justify-left"
+            className="w-full px-4 py-2 bg-[rgba(66,112,165,0.96)] text-white rounded source-sans-3-regular text-left transition-transform duration-200 active:scale-95 hover:opacity-90 flex items-center justify-start"
+            onClick={() => setShowProfile(true)}
+          >
+            <FaUser className="mr-2" />
+            <span>Profile</span>
+          </button>
+        </div>
+
+        {/* Tombol Logout untuk Mobile */}
+        <div className="lg:hidden flex justify-center">
+          <button
+            className="w-full px-4 py-2 bg-[rgba(66,112,165,0.96)] text-white rounded source-sans-3-regular text-left transition-transform duration-200 active:scale-95 hover:opacity-90 flex items-center justify-start"
             onClick={() => setIsLogoutModalOpen(true)}
           >
             <FaSignOutAlt className="mr-2" />
             <span>Logout</span>
           </button>
         </div>
-
       </div>
 
+      {/* Overlay untuk menutup sidebar di mobile */}
       {isOpen && <div className="fixed inset-0 bg-black opacity-50 z-30 lg:hidden" onClick={onClose}></div>}
+      {/* Modal Logout */}
       {isLogoutModalOpen && <LogoutModal onCancel={() => setIsLogoutModalOpen(false)} />}
+      {showProfile && (
+        <div className="fixed inset-0 bg-white p-4 z-50 overflow-auto">
+          <Profile onBack={() => setShowProfile(false)} /> {/* Memanggil Profile dengan fungsi "Back" */}
+        </div>
+      )}
     </>
   );
 };
