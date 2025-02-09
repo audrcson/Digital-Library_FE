@@ -39,12 +39,12 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
         className={`fixed top-[12%] left-0 w-full lg:w-[23%] bg-[#1A2E3E] px-4 py-1 z-40 transform ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:translate-x-0 lg:top-[12%] lg:min-h-screen ${
-          openIndex !== null ? "h-auto" : "h-[50%]"
-        } pb-6`}
+          openIndex !== null ? "h-auto" : "h-[52%]"
+        }`}
       >
         <div className="space-y-3 pt-6">
           {items.map((item, index) => (
-            <div key={index} className="rounded bg-[rgba(66,112,165,0.96)] transition-all duration-300 mb-4">
+            <div key={index} className="rounded bg-[rgba(66,112,165,0.96)] transition-all duration-300">
               <div
                 className="source-sans-3-regular text-white px-4 py-2 cursor-pointer flex items-center justify-between"
                 onClick={() => handleAccordionToggle(index)}
@@ -75,7 +75,7 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
         </div>
 
         {/* Tombol Profile untuk Mobile */}
-        <div className="lg:hidden pt-5 mb-3 flex justify-center">
+        <div className="lg:hidden pt-10 mb-3 flex justify-center">
           <button
             className="w-full px-4 py-2 bg-[rgba(66,112,165,0.96)] text-white rounded source-sans-3-regular text-left transition-transform duration-200 active:scale-95 hover:opacity-90 flex items-center justify-start"
             onClick={() => setShowProfile(true)}
