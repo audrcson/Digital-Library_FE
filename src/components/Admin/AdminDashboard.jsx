@@ -49,11 +49,12 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
+    <div className="overflow-auto px-5 scrollbar-hide">
       {/* Header */}
-      <div className="text-left mb-6">
-        <h1 className="text-4xl font-bold text-gray-800">Admin Dashboard</h1>
-        <p className="text-gray-500 mt-1">Welcome back, Admin! Here's a quick overview.</p>
+      <div className="text-left mb-4">
+        <h1 className="text-3xl source-sans-3-semibold text-gray-800">Admin Dashboard</h1>
+        <p className="text-gray-500 mt-1">
+          Welcome back, Admin! Here's a quick overview.</p>
       </div>
 
       {/* Statistic Cards */}

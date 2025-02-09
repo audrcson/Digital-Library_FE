@@ -48,7 +48,7 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
               <span className="text-xl ">{button.icon}</span>
               <span>{button.label}</span>
               <span
-                className={`absolute inset-y-0 right-0 w-1 bg-blue-400 transition-transform duration-300 origin-top ${
+                className={`absolute inset-y-0 right-0 w-1.5 bg-blue-400 transition-transform duration-300 origin-top ${
                   activeButton === button.label ? "scale-y-100" : "scale-y-0"
                 }`}
               ></span>

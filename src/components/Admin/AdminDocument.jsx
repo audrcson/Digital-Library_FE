@@ -35,6 +35,33 @@ const AdminDocument = () => {
       revision: "v2.0",
       status: "Available",
     },
+    {
+      id: 4,
+      document: "Document 3",
+      category: "Document Procedur",
+      description: "Description 3",
+      issueDate: "2024-03-01",
+      revision: "v2.0",
+      status: "Available",
+    },
+    {
+      id: 5,
+      document: "Document 3",
+      category: "Document Procedur",
+      description: "Description 3",
+      issueDate: "2024-03-01",
+      revision: "v2.0",
+      status: "Available",
+    },
+    {
+      id: 6,
+      document: "Document 3",
+      category: "Document Procedur",
+      description: "Description 3",
+      issueDate: "2024-03-01",
+      revision: "v2.0",
+      status: "Available",
+    },
   ]);
 
   const [selectAll, setSelectAll] = useState(false);
