@@ -29,7 +29,7 @@ const Profile = ({ onBack }) => {
   };
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-md">
+    <div className="p-6 bg-white shadow-md rounded-md scrollbar-hide">
       {/* Tombol Back */}
       <button
         onClick={onBack}

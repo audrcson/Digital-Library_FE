@@ -33,10 +33,11 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
     <>
       {/* Sidebar tetap turun dari atas */}
       <div
-        className={`fixed top-[12%] left-0 h-screen w-full lg:w-[23%] bg-[#1A2E3E] py-1 z-40 transform ${
-          isOpen ? "translate-y-0" : "-translate-y-full"
-        } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:top-[12%] lg:min-h-screen`}
-      >
+  className={`fixed top-[12%] left-0 w-full lg:w-[23%] bg-[#1A2E3E] py-1 z-40 transform ${
+    isOpen ? "translate-y-0" : "-translate-y-full"
+  } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:top-[12%] 
+     h-screen max-h-[65vh] overflow-y-auto lg:min-h-screen`}
+>
         <div className="space-y-3 pt-6">
           {/* Admin Info */}
           <div className="flex flex-col items-start text-white space-y-1 pb-3 pl-4">
