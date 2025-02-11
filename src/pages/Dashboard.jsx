@@ -88,7 +88,7 @@ const Dashbord = () => {
           onHamburgerClick={handleHamburgerClick}
           onProfileClick={handleProfileClick}
         />
-        <div className="mt-[16%] lg:mt-[7%] lg:ml-[23%] lg:w-[77%] p-4">
+        <div className="fixed mt-[20%] lg:mt-[7%] lg:ml-[23%] lg:w-[77%] p-4">
           {showProfile && <Profile onBack={handleBackProfile} />}
           {!showProfile && <Table data={tableData[selectedButton] || []} />}
         </div>
