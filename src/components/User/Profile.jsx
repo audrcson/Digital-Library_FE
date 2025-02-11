@@ -29,7 +29,15 @@ const Profile = ({ onBack }) => {
   };
 
   return (
-    <div className="px-6 py-3 bg-white shadow-md rounded-md scrollbar-hide">
+    <div className="p-6 bg-white shadow-md rounded-md scrollbar-hide">
+      {/* Tombol Back */}
+      <button
+        onClick={onBack}
+        className="text-blue-500 hover:text-blue-700 mb-6 flex items-center"
+      >
+        &lt; Back
+      </button>
+
       {/* Header Profil */}
       <div className="flex items-center space-x-4 mb-8">
         <FaUserAlt className="text-6xl text-blue-500" />
