@@ -16,7 +16,7 @@ const Table = ({ data }) => {
         <table className="min-w-full bg-white rounded-lg border border-gray-200 table-fixed">
           <thead>
             <tr>
-              <th className="px-4 py-2 border w-1/4">Codefication</th>
+              <th className="px-4 py-2 border w-1/4">Codification</th>
               <th className="px-4 py-2 border w-1/4">Machine Name</th>
               <th className="px-4 py-2 border w-1/4">Manufacturer</th>
             </tr>
