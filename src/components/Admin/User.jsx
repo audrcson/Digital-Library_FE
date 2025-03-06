@@ -5,9 +5,9 @@ import { LuArrowUpDown } from 'react-icons/lu';
 
 const User = () => {
   const [users, setUsers] = useState([
-    { id: 1, name: 'John Doe', email: 'john.doe@example.com', status: 'Active' },
-    { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', status: 'Inactive' },
-    { id: 3, name: 'Bob Johnson', email: 'bob.johnson@example.com', status: 'Active' },
+    { id: 1, name: 'Sandro', email: 'sandro@example.com', status: 'Active' },
+    { id: 2, name: 'Lando', email: 'lando@example.com', status: 'Inactive' },
+    { id: 3, name: 'Sajidah', email: 'sajidah@example.com', status: 'Active' },
   ]);
 
   const [selectAll, setSelectAll] = useState(false);

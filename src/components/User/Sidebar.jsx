@@ -16,7 +16,7 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
     },
     {
       title: "Document Manual Book",
-      buttons: ["MEM-MB-MAC", "MEM-MB-MFT", "MEM-MB-BCT", "MEM-MB-SFT", "MEM-MB-UTL", "MEM-MB-GEN"],
+      buttons: ["DM6300", "DM6400", "DM6500", "DM6600"],
     },
     {
       title: "Bisnis Proses",

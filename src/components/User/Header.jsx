@@ -54,7 +54,7 @@ const Header = ({ onHamburgerClick, onProfileClick }) => {
           {/* User Info */}
           <div className="hidden lg:flex items-center space-x-4 relative">
             <div className="text-sm text-right">
-              <p className="font-semibold">John Doe</p>
+              <p className="font-semibold">Sandro</p>
               <p className="font-semibold">User</p>
             </div>
             <div className="relative" ref={dropdownRef}>

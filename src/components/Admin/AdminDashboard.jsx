@@ -16,11 +16,9 @@ const AdminDashboard = () => {
 
   // Dummy data for frequently read documents
   const popularDocuments = [
-    { title: "Maintenance Guide 2024", reads: 120 },
-    { title: "Machine Operation Handbook", reads: 95 },
-    { title: "Safety Procedures", reads: 80 },
-    { title: "Kraft Machine Blueprint", reads: 70 },
-    { title: "Daily Maintenance Log", reads: 65 },
+    { title: "Manual Spindle GMN", reads: 13 },
+    { title: "Manual Jobs", reads: 8 },
+    { title: "Wiring DMC 210 U", reads: 5 },
   ];
 
   // Chart Data using useMemo
@@ -106,9 +104,10 @@ const AdminDashboard = () => {
       </div>
 
       {/* Footer */}
+      {/*
       <div className="mt-8 text-center text-gray-500">
         <p>© 2024 Jenni Febiyola Sari. All rights reserved.</p>
-      </div>
+      </div>*/}
     </div>
   );
 };
