@@ -9,8 +9,8 @@ const DetailTable = ({ group, onBack }) => {
       { code: "602_4B", name: "Emergency Repair Procedure", manu: "" },
     ],
     "Group High Speed Machine": [
-      { code: "AAAR02", name: "DMC 210 U", manu: "Deckel Maho"},
-      { code: "AABG01", name: "Jobs", manu: "Gantry" },
+      { code: "AAAR", name: "DMC 210 U", manu: "Deckel Maho"},
+      { code: "AABG", name: "Jobs", manu: "Gantry" },
     ],
   };
 
@@ -23,9 +23,10 @@ const DetailTable = ({ group, onBack }) => {
     "602_4B": [
       { document: "Doc-003", description: "Emergency Repair Steps", issueDate: "2024-02-10", revision: "Rev 2" },
     ],
-    "AAAR02": [
+    "AAAR": [
       { doc: "Manual_Spindle_DNM.pdf", fileUrl: "/Manual spindle GMN.pdf", desc: "Manual book untuk mesin DMC 210 U", date: "2024-01-20", rev: "Rev 1" },
-      { doc: "Geometrik.pdf", fileUrl: "/geometrik.pdf", desc: "Geometrik untuk mesin DMC 210 U", date: "2024-01-20", rev: "Rev 1" },
+      { doc: "Geometrik.pdf", fileUrl: "/geometrik.pdf", desc: "Geometrik untuk mesin DMC 210 U", date: "", rev: "" },
+      { doc: "Wiring DMC 210 U.pdf", fileUrl: "/wiring DMC 210 U.pdf", desc: "Wiring untuk mesin DMC 210 U", date: "", rev: "" },
     ],
     "AABG01": [
       { doc: "Manual Jobs.pdf", fileUrl: "/J1294.pdf", desc: "Manual book untuk mesin Jobs", date: "2024-03-01", rev: "Rev 2" },
