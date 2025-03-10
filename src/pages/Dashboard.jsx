@@ -14,177 +14,92 @@ const Dashbord = () => {
   const tableData = {
     "Document Procedure-MEM-DP-P602_4": [
       { 
-        code: "MEM-DP-P602_4", 
-        name: "Procedure for Maintenance of Production Facilities", 
-        manu: "", 
-        documents: [
-          {
-            doc: "Maintenance_Guide.pdf",
-            fileUrl: "/10-DP-P602_4.pdf",
-            desc: "Panduan perawatan mesin Kraft",
-            date: "2025-03-05",
-            rev: "1.2"
-          },
-          {
-            doc: "Inspection_Guide.pdf",
-            fileUrl: "/10-DP-P602_4.pdf",
-            desc: "Petunjuk inspeksi berkala",
-            date: "2025-03-06",
-            rev: "1.3"
-          }
-        ]
+        group: "MEM-DP-P602_4", 
+        area: "Procedure for Maintenance of Production Facilities",
       }
     ],
   
     "Document Procedure-MEM-DP-W602_01": [
       { 
-        code: "MEM-DP-W602_01", 
-        name: "Work Procedure for Machine Maintenance", 
-        manu: "", 
-        documents: [
-          {
-            doc: "Work_Instruction.pdf",
-            fileUrl: "/10-DP-W602_01.pdf",
-            desc: "Instruksi kerja untuk pemeliharaan",
-            date: "2025-04-10",
-            rev: "2.0"
-          },
-          {
-            doc: "Repair_Guide.pdf",
-            fileUrl: "/10-DP-W602_01.pdf",
-            desc: "Panduan perbaikan mesin",
-            date: "2025-04-15",
-            rev: "2.1"
-          }
-        ]
+        group: "MEM-DP-W602_01", 
+        area: "Work Procedure for Machine Maintenance",
       }
     ],
   
     "Document Procedure-MEM-DP-W602_02": [
       { 
-        code: "MEM-DP-W602_02", 
-        name: "Machine Maintenance Procedures", 
-        manu: "", 
-        documents: [
-          {
-            doc: "Procedure_Doc.pdf",
-            fileUrl: "/10-DP-W602_02.pdf",
-            desc: "Dokumen prosedur perawatan",
-            date: "2025-02-20",
-            rev: "1.5"
-          }
-        ]
+        group: "MEM-DP-W602_02", 
+        area: "Machine Maintenance Procedures",
       }
     ],
   
-    "Document Manual Book-DM6300": [
+    "Document Manual Book-Maintenance Machining Facility": [
       { 
-        code: "AAAR02", 
-        name: "DMC 210 U", 
-        manu: "Deckel Maho", 
-        documents: [
-          {
-            doc: "Manual_Spindle_DNM.pdf",
-            fileUrl: "/Manual spindle GMN.pdf",
-            desc: "Manual book untuk mesin DMC 210 U",
-            date: " ",
-            rev: " "
-          },
-          {
-            doc: "Geometrik.pdf",
-            fileUrl: "/geometrik.pdf",
-            desc: "Geometrik untuk mesin DMC 210 U",
-            date: " ",
-            rev: " "
-          },
-          {
-            doc: "Wiring DMC 210 U.pdf",
-            fileUrl: "/wiring DMC 210 U.pdf",
-            desc: "Wiring untuk mesin DMC 210 U",
-            date: " ",
-            rev: " "
-          },
-        ]
+        group: "Group Conventional & TNC Machine", 
+        area: "Machining",
       },
       { 
-        code: "AABG01", 
-        name: "Jobs", 
-        manu: "Gantry", 
-        documents: [
-          {
-            doc: "Manual Jobs.pdf",
-            fileUrl: "/J1294.pdf",
-            desc: "Manual book untuk mesin Jobs",
-            date: " ",
-            rev: " "
-          },
-          {
-            doc: "Jobs Maintenance Manual.pdf",
-            fileUrl: "/05_JOBS MAINTENANCE MANUAL.pdf",
-            desc: "Jobs Maintenance Manual untuk Jobs",
-            date: " ",
-            rev: " "
-          },
-          {
-            doc: "Wiring Diagram Jobs.pdf",
-            fileUrl: "/06_WIRING DIAGRAMS.pdf",
-            desc: "Wiring untuk mesin DMC 210 U",
-            date: " ",
-            rev: " "
-          },
-        ]
+        group: "Group High Speed Machine", 
+        area: "Machining",
+      },
+      { 
+        group: "Group Profiling Machine", 
+        area: "Machining",
+      },
+      { 
+        group: "Group CNC Machine", 
+        area: "Machining",
       },
     ],
   
-    "Document Manual Book-DM6400": [
+    "Document Manual Book-Maintenance Sheet Metal Forming Precutting Facility": [
       { 
-        code: "DM6400", 
-        name: "Manual Book DM6400", 
-        manu: "", 
-        documents: [
-          {
-            doc: "Manual_DM6400.pdf",
-            fileUrl: "/DM6400.pdf",
-            desc: "Manual book untuk mesin DM6400",
-            date: "2024-12-20",
-            rev: "3.2"
-          }
-        ]
-      }
+        group: "Group Stretch Forming", 
+        area: "Metal Forming & Tooling",
+      },
+      { 
+        group: "Group Detail Tools Machining ", 
+        area: "Metal Forming & Tooling",
+      },
+      { 
+        group: "Group Welding & Tubing", 
+        area: "Metal Forming & Tooling",
+      },
+      { 
+        group: "Group Profile Press Forming", 
+        area: "Metal Forming & Tooling",
+      },
+      { 
+        group: "Group Tools Dpm, Jigs Inv. & Services", 
+        area: "Metal Forming & Tooling",
+      },
+      { 
+        group: "Group Precutting", 
+        area: "Metal Forming & Tooling",
+      },
+      { 
+        group: "Group Sheet Press Forming", 
+        area: "Metal Forming & Tooling",
+      },
     ],
   
-    "Document Manual Book-DM6500": [
+    "Document Manual Book-Maintenance Special Process Facility": [
       { 
-        code: "DM6500", 
-        name: "Manual Book DM6500", 
-        manu: "", 
-        documents: [
-          {
-            doc: "Manual_DM6500.pdf",
-            fileUrl: "/DM6500.pdf",
-            desc: "Manual book untuk mesin DM6500",
-            date: "2024-12-25",
-            rev: "3.3"
-          }
-        ]
-      }
-    ],
-  
-    "Document Manual Book-DM6600": [
+        group: "Group Heat Treatment", 
+        area: "Special Process",
+      },
       { 
-        code: "DM6600", 
-        name: "Manual Book DM6600", 
-        manu: "", 
-        documents: [
-          {
-            doc: "Manual_DM6600.pdf",
-            fileUrl: "/DM6600.pdf",
-            desc: "Manual book untuk mesin DM6600",
-            date: "2024-12-30",
-            rev: "3.4"
-          }
-        ]
-      }
+        group: "Group Composite", 
+        area: "Special Process",
+      },
+      { 
+        group: "Group Bonding", 
+        area: "Special Process",
+      },
+      { 
+        group: "Group Chemical Consumable&utility Support", 
+        area: "Special Process",
+      },
     ],
   
     "Bisnis Proses-Maint. Engineering & Development": [
@@ -192,15 +107,6 @@ const Dashbord = () => {
         code: "Maint. Engineering & Development", 
         name: "Business Process Engineering & Development", 
         manu: "", 
-        documents: [
-          {
-            doc: "Engineering_Dev.pdf",
-            fileUrl: "/Engineering_Dev.pdf",
-            desc: "Dokumen proses rekayasa dan pengembangan",
-            date: "2025-01-10",
-            rev: "1.0"
-          }
-        ]
       }
     ],
   
@@ -209,15 +115,6 @@ const Dashbord = () => {
         code: "Maint. Planning & Control", 
         name: "Business Process Planning & Control", 
         manu: "", 
-        documents: [
-          {
-            doc: "Planning_Control.pdf",
-            fileUrl: "/Planning_Control.pdf",
-            desc: "Dokumen perencanaan dan pengendalian",
-            date: "2025-01-15",
-            rev: "1.1"
-          }
-        ]
       }
     ],
   
@@ -226,15 +123,6 @@ const Dashbord = () => {
         code: "Maint. Service & Repair Machine", 
         name: "Business Process Service & Repair Machine", 
         manu: "", 
-        documents: [
-          {
-            doc: "Service_Repair.pdf",
-            fileUrl: "/Service_Repair.pdf",
-            desc: "Dokumen servis dan perbaikan mesin",
-            date: "2025-01-20",
-            rev: "1.2"
-          }
-        ]
       }
     ],
   
@@ -243,15 +131,6 @@ const Dashbord = () => {
         code: "Metal Forming, Quality, Tooling", 
         name: "Business Process Metal Forming, Quality, and Tooling", 
         manu: "", 
-        documents: [
-          {
-            doc: "Metal_Forming.pdf",
-            fileUrl: "/Metal_Forming.pdf",
-            desc: "Dokumen proses pembentukan logam dan kualitas",
-            date: "2025-01-25",
-            rev: "1.3"
-          }
-        ]
       }
     ]
   };

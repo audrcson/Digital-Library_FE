@@ -1,50 +1,104 @@
-import React from "react";
+import { useState } from "react";
+import DocumentTable from "./DocumentTable";
 
-const DetailTable = ({ documentData, onClose }) => {
-  if (!documentData || !documentData.documents || documentData.documents.length === 0) {
-    return <p className="text-center text-red-500">No documents available</p>;
-  }
+const DetailTable = ({ group, onBack }) => {
+  // Data contoh untuk detail berdasarkan group
+  const detailData = {
+    "Group Conventional & TNC Machine": [
+      { code: "602_4A", name: "Routine Check Maintenance", manu: "" },
+      { code: "602_4B", name: "Emergency Repair Procedure", manu: "" },
+    ],
+    "Group High Speed Machine": [
+      { code: "AAAR02", name: "DMC 210 U", manu: "Deckel Maho"},
+      { code: "AABG01", name: "Jobs", manu: "Gantry" },
+    ],
+  };
+
+  // Data tambahan untuk detail dokumen
+  const documentDetails = {
+    "602_4A": [
+      { doc: "Doc-001", fileUrl: "/10-DP-W602_01.pdf", desc: "Inspection Report", date: "2024-01-01", rev: "Rev 1" },
+      { doc: "Doc-002", desc: "Maintenance Guide", date: "2023-12-15", rev: "Rev 3" },
+    ],
+    "602_4B": [
+      { document: "Doc-003", description: "Emergency Repair Steps", issueDate: "2024-02-10", revision: "Rev 2" },
+    ],
+    "AAAR02": [
+      { doc: "Manual_Spindle_DNM.pdf", fileUrl: "/Manual spindle GMN.pdf", desc: "Manual book untuk mesin DMC 210 U", date: "2024-01-20", rev: "Rev 1" },
+      { doc: "Geometrik.pdf", fileUrl: "/geometrik.pdf", desc: "Geometrik untuk mesin DMC 210 U", date: "2024-01-20", rev: "Rev 1" },
+    ],
+    "AABG01": [
+      { doc: "Manual Jobs.pdf", fileUrl: "/J1294.pdf", desc: "Manual book untuk mesin Jobs", date: "2024-03-01", rev: "Rev 2" },
+    ],
+  };
+
+  // State untuk menyimpan kode yang dipilih
+  const [selectedCode, setSelectedCode] = useState(null);
+
+  // Handle klik pada row tabel pertama
+  const handleRowClick = (code) => {
+    setSelectedCode(code);
+  };
+
+  // Handle kembali ke tabel utama
+  const handleBackToTable = () => {
+    setSelectedCode(null);
+  };
 
   return (
-    <div className="overflow-auto rounded-lg shadow-lg p-4 bg-white">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-bold">Document Details</h2>
-        <button
-          onClick={onClose}
-          className="px-3 py-1 bg-red-500 text-white rounded"
-        >
-          Close
-        </button>
-      </div>
-      <table className="min-w-full bg-white rounded-lg border border-gray-200">
-        <thead>
-          <tr>
-            <th className="px-4 py-2 border">Document</th>
-            <th className="px-4 py-2 border">Description</th>
-            <th className="px-4 py-2 border">Issue Date</th>
-            <th className="px-4 py-2 border">Revision</th>
-          </tr>
-        </thead>
-        <tbody>
-          {documentData.documents.map((doc, index) => (
-            <tr key={index}>
-              <td className="px-4 py-2 border text-center">
-                <a
-                  href={doc.fileUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
-                >
-                  {doc.doc}
-                </a>
-              </td>
-              <td className="px-4 py-2 border text-center">{doc.desc}</td>
-              <td className="px-4 py-2 border text-center">{doc.date}</td>
-              <td className="px-4 py-2 border text-center">{doc.rev}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      {/* Tombol Back */}
+      <button onClick={onBack} className="mb-4 px-3 py-2 bg-gray-300 rounded text-sm">
+        ← Back
+      </button>
+
+      {/* Jika ada kode yang diklik, tampilkan DetailDocumentTable */}
+      {selectedCode ? (
+        <DocumentTable
+          code={selectedCode}
+          documents={documentDetails[selectedCode] || []}
+          onBack={handleBackToTable}
+        />
+      ) : (
+        <>
+          {/* Judul */}
+          <h2 className="text-lg font-semibold mb-3">{group}</h2>
+
+          {/* Tabel */}
+          <div className="overflow-auto rounded-lg shadow-lg">
+            <table className="min-w-full bg-white rounded-lg border border-gray-200">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="px-4 py-2 border text-center">Kode</th>
+                  <th className="px-4 py-2 border text-center">Nama</th>
+                  <th className="px-4 py-2 border text-center">Manufacturer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {detailData[group] && detailData[group].length > 0 ? (
+                  detailData[group].map((item, index) => (
+                    <tr
+                      key={index}
+                      className="hover:bg-gray-50 cursor-pointer"
+                      onClick={() => handleRowClick(item.code)}
+                    >
+                      <td className="px-4 py-2 border text-center break-words text-blue-500 cursor-pointer hover:underline">{item.code}</td>
+                      <td className="px-4 py-2 border text-center">{item.name}</td>
+                      <td className="px-4 py-2 border text-center">{item.manu || "-"}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td className="px-4 py-2 border text-center" colSpan="3">
+                      No details available
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 };

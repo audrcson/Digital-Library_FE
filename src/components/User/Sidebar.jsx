@@ -16,7 +16,7 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
     },
     {
       title: "Document Manual Book",
-      buttons: ["DM6300", "DM6400", "DM6500", "DM6600"],
+      buttons: ["Maintenance Machining Facility", "Maintenance Sheet Metal Forming Precutting Facility", "Maintenace Special Process Facility", "Maintenance Utility & Quality Facility"],
     },
     {
       title: "Bisnis Proses",
