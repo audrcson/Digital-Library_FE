@@ -80,7 +80,7 @@ const AdminDashboard = () => {
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left Section: Frequently Read Documents */}
         <div className="bg-white shadow-lg rounded-lg p-6 flex-1">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Frequently Read Documents (Monthly)</h2>
+          <h2 className="text-2xl source-sans-3-regular text-gray-800 mb-4">Frequently Read Documents (Monthly)</h2>
           <ul>
             {popularDocuments.map((doc, index) => (
               <li

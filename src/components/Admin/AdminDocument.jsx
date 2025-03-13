@@ -189,7 +189,11 @@ const AdminDocument = () => {
                 <th className="w-44 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold border sticky top-0 left-10 whitespace-nowrap">
                   Document Name
                 </th>
-                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Category</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Group</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Bidang</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Codification</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Nama Mesin</th>
+                <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Manufacturer</th>
                 <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Description</th>
                 <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Issue Date</th>
                 <th className="w-40 px-4 py-2 bg-[#70A8E9] source-sans-3-semibold whitespace-nowrap">Revision</th>
@@ -213,12 +217,16 @@ const AdminDocument = () => {
                     />
                   </td>
                   <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm sticky top-0 left-10 bg-white border-r text-center">
-                    {item.document}
+                    {item.doc}
                   </td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.category}</td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.description}</td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.issueDate}</td>
-                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.revision}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.group}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.area}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.code}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.name}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.group}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.desc}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.date}</td>
+                  <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">{item.rev}</td>
                   <td className="w-40 px-4 py-2 source-sans-3-regular border text-sm text-center bg-white">
                     <span
                       className={`${

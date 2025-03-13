@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 const DocumentTable = ({ code, documents, onBack }) => {
   return (
     <div>

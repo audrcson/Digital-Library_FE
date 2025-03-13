@@ -3,6 +3,7 @@ import Header from "../components/User/Header";
 import Sidebar from "../components/User/Sidebar";
 import Table from "../components/User/Table";
 import Profile from "../components/User/Profile"; // Import komponen Profile
+import AdminDocument from "../components/Admin/AdminDocument";
 
 const Dashbord = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -144,6 +145,8 @@ const Dashbord = () => {
     setIsSidebarOpen(false);
   };
 
+  const [showDetail, setShowDetail] = useState(false);
+
   const handleButtonClick = (buttonKey) => {
     if (selectedButton === buttonKey) return; // Jika tombol yang sama diklik, tidak perlu update ulang
     setSelectedButton(buttonKey);
@@ -162,6 +165,9 @@ const Dashbord = () => {
   const handleBackProfile = () => {
     setShowProfile(false); 
   };
+
+  <AdminDocument data={tableData[selectedButton] || []} />
+
 
   return (
     <div className="flex h-screen bg-[#fafafa]">
