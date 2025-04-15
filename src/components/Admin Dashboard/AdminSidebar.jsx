@@ -1,20 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, NavLink } from "react-router-dom";
 import { MdAdminPanelSettings, MdDashboard } from "react-icons/md";
 import { IoDocumentText, IoLogOut } from "react-icons/io5";
 import { FaUserEdit, FaUser } from "react-icons/fa";
-import LogoutModal from "../User/LogoutModal"; // Pastikan path sesuai
-import Profile from "../User/Profile"; // ✅ Tambahkan import Profile
+import LogoutModal from "../User/LogoutModal";
+import Profile from "../User/Profile";
 
 const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [isDocumentActive, setIsDocumentActive] = useState(false);
+  const [isUserAccountActive, setIsUserAccountActive] = useState(false);
   const [activeButton, setActiveButton] = useState("");
   const [showProfile, setShowProfile] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const buttons = [
-    { icon: <MdDashboard />, label: "Dashboard" },
-    { icon: <IoDocumentText />, label: "Document" },
-    { icon: <FaUserEdit />, label: "Manage User" },
-  ];
+  useEffect(() => {
+    setIsDocumentActive(location.pathname === "/admin");
+    setIsUserAccountActive(location.pathname === "/admin/user-account");
+  }, [location]);
+
+  const handleUserAccountClick = () => {
+    navigate("/admin/user-account");
+    setIsDocumentActive(false);
+    setIsUserAccountActive(true);
+  }
 
   const handleButtonClick = (label) => {
     if (label === "Logout") {
@@ -29,10 +39,10 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
   };
 
   return (
-    <>
+    <div className="sidebar">
       {/* Sidebar tetap turun dari atas */}
       <div
-        className={`fixed top-[12%] left-0 w-full lg:w-[23%] bg-[#1A2E3E] py-1 z-40 transform ${
+        className={`fixed top-[12%] left-0 w-full lg:w-[20%] bg-[#1A2E3E] py-1 transform ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         } transition-transform duration-300 ease-in-out lg:translate-y-0 lg:top-[12%] 
           h-screen max-h-[65vh] overflow-y-auto lg:min-h-screen`}
@@ -43,34 +53,53 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
             <div className="flex items-center space-x-2">
               <MdAdminPanelSettings className="text-white text-5xl" />
               <div>
-                <span className="block text-lg font-semibold">Admin</span>
-                <span className="block text-md text-gray-300">
+                <span className="block text-lg source-sans-3-semibold">Admin</span>
+                <span className="block text-md text-white">
                   Maintenance Library Excellent
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Buttons Menu */}
-          {buttons.map((button, index) => (
-            <button
-              key={index}
-              className={`flex items-center space-x-3 w-full text-left py-3 pl-12 relative transition-all duration-300 ${
-                activeButton === button.label
-                  ? "bg-[rgba(66,112,165,0.96)] text-white"
-                  : "bg-[#1A2E3E] text-white"
+          <div className="pt-4 source-sans-3-regular text-white cursor-pointer">
+            <NavLink
+              to="/admin"
+              className={`flex sm:h-4 md:h-8 lg:h-12 xl:h-16 hover:bg-[rgba(66,112,165,0.96)] hover:text-white ${
+                isDocumentActive
+                ? "bg-[rgba(66,112,165,0.96)] text-white border-r-8 border-blue-400"
+                : ""
               }`}
-              onClick={() => handleButtonClick(button.label)}
+              onClick={() => {
+                setIsDocumentActive(true);
+                setIsUserAccountActive(false);
+              }}
             >
-              <span className="text-xl">{button.icon}</span>
-              <span>{button.label}</span>
-              <span
-                className={`absolute inset-y-0 right-0 w-1.5 bg-blue-400 transition-transform duration-300 origin-top ${
-                  activeButton === button.label ? "scale-y-100" : "scale-y-0"
-                }`}
-              ></span>
-            </button>
-          ))}
+              <div className="flex items-center mx-9">
+                <IoDocumentText className="mr-4 sm:text-[10px] md:text-[15px] lg:text-[20px] xl:text-[25px] text-white" />
+                <p className="sm:text-xs md:text-sm lg:text-sm xl:text-base source-sans-3-regular">
+                  Document
+                </p>
+              </div>
+            </NavLink>
+            
+            <NavLink
+              to="/admin/user-account"
+              className={`flex sm:h-4 md:h-8 lg:h-12 xl:h-16 hover:bg-[rgba(66,112,165,0.96)] hover:text-white ${
+                isUserAccountActive ? "bg-[rgba(66,112,165,0.96)] text-white border-r-8 border-blue-400" : ""
+              }`}
+              onClick={() => {
+                setIsDocumentActive(false);
+                setIsUserAccountActive(true);
+              }}
+            >
+              <div className="flex items-center mx-9">
+                <FaUser className="mr-4 sm:text-[10px] md:text-[15px] lg:text-[20px] xl:text-[25px]" />
+                <p className="sm:text-xs md:text-sm lg:text-sm xl:text-base">
+                  User Account
+                </p>
+              </div>
+            </NavLink>
+          </div>
         </div>
 
         {/* Tombol Profile & Logout (Hanya untuk Mobile) */}
@@ -130,7 +159,7 @@ const AdminSidebar = ({ isOpen, onClose, onButtonClick }) => {
           <Profile onBack={() => setShowProfile(false)} />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

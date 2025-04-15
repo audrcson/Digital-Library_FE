@@ -4,7 +4,9 @@ import { FaSignOutAlt, FaUser } from "react-icons/fa";
 import Profile from "./Profile"; // Pastikan path sesuai
 import LogoutModal from "./LogoutModal"; // Pastikan LogoutModal tersedia
 
-const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
+const Sidebar = ({ isOpen, onClose, onButtonClick, setTitle }) => {
+  const [activeButton, setActiveButton] = useState(null); // State to track active button
+
   const [openIndex, setOpenIndex] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
@@ -63,7 +65,10 @@ const Sidebar = ({ isOpen, onClose, onButtonClick }) => {
                     <button
                       key={btnIndex}
                       className="w-full px-4 py-2 bg-[rgba(66,120,180,0.96)] text-white rounded source-sans-3-regular text-center transition-transform duration-200 active:scale-95 hover:opacity-90"
-                      onClick={() => handleButtonClick(`${item.title}-${btnLabel}`)}
+                      onClick={() => {
+                        handleButtonClick(`${item.title}-${btnLabel}`);
+                        setTitle(btnLabel);
+                      }}                      
                     >
                       {btnLabel}
                     </button>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DetailTable from "./DetailTable"
 
-const Table = ({ data = [] }) => {
+const Table = ({ data = [], title }) => {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [selectedManufacturer, setSelectedManufacturer] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -38,7 +38,7 @@ const Table = ({ data = [] }) => {
   return (
     <>
       <div className="flex justify-between items-center pb-3">
-        <h2 className="text-xl font-semibold">Maintenance Machining Facility</h2>
+        <h2 className="text-xl font-semibold">{title}</h2>
         <div className="relative">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}

@@ -14,6 +14,7 @@ const DocumentTable = ({ code, documents, onBack }) => {
               <th className="px-4 py-2 border text-center">Description</th>
               <th className="px-4 py-2 border text-center">Date</th>
               <th className="px-4 py-2 border text-center">Revision</th>
+              <th className="px-4 py-2 border text-center">Rak Hard File</th>
             </tr>
           </thead>
           <tbody>
@@ -33,6 +34,7 @@ const DocumentTable = ({ code, documents, onBack }) => {
                   <td className="px-4 py-2 border text-center">{doc.desc}</td>
                   <td className="px-4 py-2 border text-center">{doc.date}</td>
                   <td className="px-4 py-2 border text-center">{doc.rev}</td>
+                  <td className="px-4 py-2 border text-center">{doc.rak_hardfile}</td>
                 </tr>
               ))
             ) : (

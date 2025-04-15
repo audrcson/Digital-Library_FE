@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Header from "../components/User/Header";
 import Sidebar from "../components/User/Sidebar";
 import Table from "../components/User/Table";
-import Profile from "../components/User/Profile"; // Import komponen Profile
-import AdminDocument from "../components/Admin/AdminDocument";
+import Profile from "../components/User/Profile"; // Mengimpor komponen Profile
+import AdminDocument from "./AdminDocument";
 
-const Dashbord = () => {
+const UserDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedButton, setSelectedButton] = useState(null);
   const [showProfile, setShowProfile] = useState(false); // State untuk menampilkan Profile
+  const [title, setTitle] = useState("");
   const user = JSON.parse(localStorage.getItem('user'));
   
 
@@ -151,7 +152,7 @@ const Dashbord = () => {
     if (selectedButton === buttonKey) return; // Jika tombol yang sama diklik, tidak perlu update ulang
     setSelectedButton(buttonKey);
     setShowProfile(false); // Pastikan Profile tertutup
-    setIsSidebarOpen(false); // Tutup sidebar setelah klik
+    setIsSidebarOpen(true); // Tetap buka sidebar setelah mengklik
 
     // Reset tampilan jika sedang di TableDetail
     setShowDetail(false);
@@ -170,25 +171,31 @@ const Dashbord = () => {
 
 
   return (
-    <div className="flex h-screen bg-[#fafafa]">
-      <Sidebar
-        isOpen={isSidebarOpen}
-        onClose={handleCloseSidebar}
-        onButtonClick={handleButtonClick}
-      />
-
-      <div className="flex flex-col w-full">
-        <Header
+    <div className="w-screen flex felx-col">
+      <div className="fixed top-0 left-0 w-full z-10">
+        <Header 
           onHamburgerClick={handleHamburgerClick}
           onProfileClick={handleProfileClick}
         />
-        <div className="mt-[16%] lg:mt-[7%] lg:ml-[23%] lg:w-[77%] p-4">
+      </div>
+      <div className="fixed w-[20%] h-screen top-[12%]">
+        <Sidebar 
+          isOpen={isSidebarOpen}
+          onClose={handleCloseSidebar}
+          onButtonClick={handleButtonClick}
+          setTitle={setTitle}
+        />
+      </div>
+      <div className="fixed">
+        <div className="fixed top-[12%] mt-5 lg:w-[75%] w-full right-2">
+          <div className="h-screen">
           {showProfile && <Profile onBack={handleBackProfile} />}
-          {!showProfile && <Table data={tableData[selectedButton] || []} />}
+          {!showProfile && <Table title={title} data={tableData[selectedButton] || []} />}
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashbord;
+export default UserDashboard;

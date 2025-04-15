@@ -41,7 +41,7 @@ const Header = ({ onHamburgerClick, onProfileClick }) => {
         <div className="w-full h-[12%] fixed top-0 left-0 bg-[rgb(94,150,214)] text-white flex items-center px-4 z-50">
           {/* Logo */}
           <div className="justify-center hidden lg:flex">
-            <img src="ptdi.png" alt="Logo" className="max-h-[70px] object-contain" />
+            <img src="/ptdi.png" alt="Logo" className="max-h-[70px] object-contain" />
           </div>
 
           {/* Title Section */}
